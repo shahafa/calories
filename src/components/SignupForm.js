@@ -1,0 +1,138 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import CircularProgress from 'material-ui/CircularProgress';
+import { red500, cyan500, grey600 } from 'material-ui/styles/colors';
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+
+  logo: {
+    marginTop: '10px',
+    marginBottom: '10px',
+    textAlign: 'center',
+    fontSize: '28px',
+    fontWeight: '300',
+    color: grey600,
+  },
+
+  error: {
+    textAlign: 'center',
+    marginTop: '20px',
+    height: '14px',
+    color: red500,
+    fontSize: '14px',
+    fontWeight: '300',
+  },
+
+  signupButton: {
+    marginTop: '30px',
+    marginBottom: '20px',
+
+    text: {
+      fontSize: '16px',
+      fontWeight: '300',
+      color: 'white',
+    },
+  },
+
+  getStarted: {
+    marginTop: '15px',
+    fontSize: '12px',
+    fontWeight: '300',
+    color: grey600,
+  },
+
+  link: {
+    cursor: 'pointer',
+    color: cyan500,
+  },
+};
+
+const Signup = ({
+  isSigningUp,
+  errorText,
+  email,
+  emailErrorText,
+  onEmailChange,
+  onEmailBlur,
+  password,
+  passwordErrorText,
+  onPasswordChange,
+  onPasswordBlur,
+  onSignupButtonClick,
+  onLoginClick,
+}) => (
+  <div style={styles.container}>
+    <div style={styles.logo}>Sign Up</div>
+
+    <TextField
+      value={email}
+      fullWidth
+      onChange={onEmailChange}
+      floatingLabelText="Email address"
+      errorText={emailErrorText}
+      onBlur={onEmailBlur}
+    />
+
+    <TextField
+      type="password"
+      value={password}
+      fullWidth
+      onChange={onPasswordChange}
+      floatingLabelText="Password"
+      errorText={passwordErrorText}
+      onBlur={onPasswordBlur}
+    />
+
+    <div style={styles.error}>{errorText}</div>
+
+    <RaisedButton
+      style={styles.signupButton}
+      primary
+      onClick={onSignupButtonClick}
+      disabled={isSigningUp}
+    >
+      {isSigningUp ?
+        <CircularProgress color="white" size={25} />
+      :
+        <div style={styles.signupButton.text}>Sign Up</div>
+      }
+    </RaisedButton>
+
+
+    <div style={styles.getStarted}>
+      {'Already have an account? '}
+      <span
+        style={styles.link}
+        onClick={onLoginClick}
+        role="button"
+        tabIndex={0}
+      >
+        Login Here
+      </span>
+    </div>
+  </div>
+);
+
+Signup.propTypes = {
+  isSigningUp: PropTypes.bool.isRequired,
+  errorText: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  emailErrorText: PropTypes.string.isRequired,
+  onEmailChange: PropTypes.func.isRequired,
+  onEmailBlur: PropTypes.func.isRequired,
+  password: PropTypes.string.isRequired,
+  passwordErrorText: PropTypes.string.isRequired,
+  onPasswordChange: PropTypes.func.isRequired,
+  onPasswordBlur: PropTypes.func.isRequired,
+  onSignupButtonClick: PropTypes.func.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
+};
+
+export default Signup;
