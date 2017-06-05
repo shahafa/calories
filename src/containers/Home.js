@@ -123,7 +123,7 @@ class Home extends Component {
     } = this.props;
 
     if (isAuthenticated) {
-      return <Redirect to={{ pathname: '/calories' }} />;
+      return <Redirect to={{ pathname: '/meals' }} />;
     }
 
     return (

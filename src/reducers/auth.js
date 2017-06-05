@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import * as type from '../actions/actionTypes';
+import * as types from '../actions/actionTypes';
 
 const initialState = {
   isAuthenticating: false,
@@ -13,20 +13,20 @@ const initialState = {
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
-    case type.RESET_AUTH_STORE:
+    case types.RESET_AUTH_STORE:
       return Object.assign({}, initialState);
-    case type.LOGIN_REQUEST:
+    case types.LOGIN_REQUEST:
       return Object.assign({}, state, {
         isAuthenticating: true,
       });
-    case type.LOGIN_SUCCESS:
+    case types.LOGIN_SUCCESS:
       return Object.assign({}, state, {
         isAuthenticating: false,
         isAuthenticated: true,
         jwtToken: action.payload.token,
         user: jwtDecode(action.payload.token).user,
       });
-    case type.LOGIN_FAILURE:
+    case types.LOGIN_FAILURE:
       return Object.assign({}, state, {
         error: action.payload.response ? action.payload.response.code : null,
         errorText: action.payload.response ? action.payload.response.message : 'Something bad happened. Please try again later',
@@ -35,18 +35,18 @@ const auth = (state = initialState, action) => {
         jwtToken: null,
         user: null,
       });
-    case type.SIGNUP_REQUEST:
+    case types.SIGNUP_REQUEST:
       return Object.assign({}, state, {
         isSigningUp: true,
       });
-    case type.SIGNUP_SUCCESS:
+    case types.SIGNUP_SUCCESS:
       return Object.assign({}, state, {
         isSigningUp: false,
         isAuthenticated: true,
         jwtToken: action.payload.token,
         user: jwtDecode(action.payload.token).user,
       });
-    case type.SIGNUP_FAILURE:
+    case types.SIGNUP_FAILURE:
       return Object.assign({}, state, {
         error: action.payload.response ? action.payload.response.code : null,
         errorText: action.payload.response ? action.payload.response.message : 'Something bad happened, Please try again later',

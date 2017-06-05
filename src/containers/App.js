@@ -7,7 +7,7 @@ import DevTools from './DevTools';
 import PrivateRoute from './PrivateRoute';
 import NoMatch from '../components/NoMatch';
 import Home from './Home';
-import Calories from './Calories';
+import Meals from './Meals';
 
 const LoginPage = props => <Home mode="login" {...props} />;
 const SignupPage = props => <Home mode="signup" {...props} />;
@@ -21,7 +21,7 @@ const App = () => (
             <Route exact path="/" component={LoginPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignupPage} />
-            <PrivateRoute path="/calories" component={Calories} />
+            <PrivateRoute path="/meals" component={Meals} />
             <Route component={NoMatch} />
           </Switch>
 
