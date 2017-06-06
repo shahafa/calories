@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { cyanA700 } from 'material-ui/styles/colors';
+import Navigation from '../containers/Navigation';
 
 const styles = {
   root: {
@@ -11,10 +12,16 @@ const styles = {
   },
 
   appBar: {
+    boxSizing: 'border-box',
     width: '100%',
     height: '64px',
     backgroundColor: cyanA700,
     boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
+    color: 'white',
+    fontSize: '26px',
+    fontWeight: '100',
+    lineHeight: '64px',
+    paddingLeft: '32px',
   },
 
   container: {
@@ -33,18 +40,26 @@ const styles = {
 };
 
 const AppShell = ({
+  history,
   children,
 }) => (
   <div style={styles.root}>
-    <div style={styles.appBar} />
+    <div style={styles.appBar}>
+      Meals
+    </div>
 
     <div style={styles.container}>
+      <Navigation
+        history={history}
+      />
+
       {children}
     </div>
   </div>
 );
 
 AppShell.propTypes = {
+  history: PropTypes.object.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.func,

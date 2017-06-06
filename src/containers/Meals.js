@@ -14,6 +14,7 @@ import NoMeals from '../components/NoMeals';
 
 class Meals extends Component {
   static propTypes = {
+    history: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     dailyMealsList: PropTypes.array.isRequired,
     mealsErrorSnackbarOpen: PropTypes.bool.isRequired,
@@ -82,6 +83,7 @@ class Meals extends Component {
 
   render() {
     const {
+      history,
       dispatch,
       dailyMealsList,
       mealsErrorSnackbarOpen,
@@ -96,7 +98,7 @@ class Meals extends Component {
     } = this.state;
 
     return (
-      <AppShell>
+      <AppShell history={history}>
         {dailyMealsList.length === 0 ?
           <NoMeals />
         :
