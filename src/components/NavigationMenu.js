@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List, ListItem } from 'material-ui/List';
+import MealsIcon from 'material-ui/svg-icons/maps/local-dining';
+import UserIcon from 'material-ui/svg-icons/action/supervisor-account';
+import SettingsIcon from 'material-ui/svg-icons/action/settings';
+import LogOutIcon from 'material-ui/svg-icons/action/exit-to-app';
 import { grey600 } from 'material-ui/styles/colors';
 
 const styles = {
@@ -35,24 +39,28 @@ const NavigationMenu = ({
     <ListItem
       style={Object.assign({}, styles.listItem, mealsActive ? styles.active : {})}
       primaryText="Meals"
+      leftIcon={<MealsIcon color={mealsActive ? '#3367d6' : grey600} />}
       onClick={onMealsClick}
     />
 
     <ListItem
       style={Object.assign({}, styles.listItem, usersActive ? styles.active : {})}
       primaryText="Users Management"
+      leftIcon={<UserIcon color={usersActive ? '#3367d6' : grey600} />}
       onClick={onUsersClick}
     />
 
     <ListItem
       style={Object.assign({}, styles.listItem, settingsActive ? styles.active : {})}
       primaryText="Settings"
+      leftIcon={<SettingsIcon color={settingsActive ? '#3367d6' : grey600} />}
       onClick={onSettingsClick}
     />
 
     <ListItem
       style={styles.listItem}
       primaryText="Sign out"
+      leftIcon={<LogOutIcon color={grey600} />}
       onClick={onSignOutClick}
     />
   </List>

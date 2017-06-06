@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const style = {
-  display: 'flex',
   flex: '1',
+  display: 'flex',
 };
 
 const Main = ({

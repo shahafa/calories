@@ -11,10 +11,12 @@ import AddMealButton from '../components/AddMealButton';
 import AddMealDialog from '../components/AddMealDialog';
 import DeleteMealDialog from '../components/DeleteMealDialog';
 import NoMeals from '../components/NoMeals';
+import Loading from '../components/Loading';
 
 class Meals extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     dailyMealsList: PropTypes.array.isRequired,
     mealsErrorSnackbarOpen: PropTypes.bool.isRequired,
     mealsErrorText: PropTypes.string.isRequired,
@@ -83,6 +85,7 @@ class Meals extends Component {
   render() {
     const {
       dispatch,
+      isLoading,
       dailyMealsList,
       mealsErrorSnackbarOpen,
       mealsErrorText,
@@ -94,6 +97,10 @@ class Meals extends Component {
       mealToDelete,
       mealToEdit,
     } = this.state;
+
+    if (isLoading) {
+      return (<Loading />);
+    }
 
     return (
       <Main>
@@ -153,6 +160,7 @@ const mapStateToProps = state => ({
   mealsErrorSnackbarOpen: state.meals.mealsErrorSnackbarOpen,
   mealsErrorText: state.meals.mealsErrorText,
   dailyMealsList: mealsGroupByDaySelector(state),
+  isLoading: state.meals.isLoading,
 });
 
 export default connect(
