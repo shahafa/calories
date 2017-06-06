@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import uuid from 'uuid/v4';
 import moment from 'moment';
-import { getMeals, addMeal, deleteMeal } from '../actions/mealsActions';
+import { getMeals, addMeal, deleteMeal, editMeal } from '../actions/mealsActions';
 import { mealsGroupByDaySelector } from '../selectors';
 import AppShell from '../components/AppShell';
 import DailyMealsCard from '../components/DailyMealsCard';
 import AddMealButton from '../components/AddMealButton';
 import AddMealDialog from '../components/AddMealDialog';
+import DeleteMealDialog from '../components/DeleteMealDialog';
 
 class Meals extends Component {
   static propTypes = {
@@ -18,6 +18,9 @@ class Meals extends Component {
 
   state = {
     addMealDialogOpen: false,
+    deleteMealDialogOpen: false,
+    mealToDelete: null,
+    mealToEdit: null,
   }
 
   componentDidMount() {
@@ -25,13 +28,13 @@ class Meals extends Component {
     dispatch(getMeals());
   }
 
-  handleAddMealClick = (date, time, meal, calories) => {
+  handleAddMealClick = (id, date, time, meal, calories) => {
     const { dispatch } = this.props;
 
     this.setState({ addMealDialogOpen: false });
 
     dispatch(addMeal({
-      id: uuid(),
+      id,
       date: moment({
         year: date.getFullYear(),
         month: date.getMonth(),
@@ -44,9 +47,42 @@ class Meals extends Component {
     }));
   }
 
+  handleEditMealClick = (id, date, time, meal, calories) => {
+    const { dispatch } = this.props;
+
+    this.setState({ addMealDialogOpen: false });
+
+    dispatch(editMeal({
+      id,
+      date: moment({
+        year: date.getFullYear(),
+        month: date.getMonth(),
+        day: date.getDate(),
+        hours: time.getHours(),
+        minutes: time.getMinutes(),
+      }).utc().format(),
+      meal,
+      calories,
+    }));
+  }
+
+  handleDeleteMealClick = () => {
+    const { dispatch } = this.props;
+    const { mealToDelete } = this.state;
+
+    dispatch(deleteMeal(mealToDelete.id));
+    this.setState({ deleteMealDialogOpen: false });
+  }
+
   render() {
-    const { dailyMealsList, dispatch } = this.props;
-    const { addMealDialogOpen } = this.state;
+    const { dailyMealsList } = this.props;
+
+    const {
+      addMealDialogOpen,
+      deleteMealDialogOpen,
+      mealToDelete,
+      mealToEdit,
+    } = this.state;
 
     return (
       <AppShell>
@@ -54,15 +90,36 @@ class Meals extends Component {
           <DailyMealsCard
             key={dailyMeals.date}
             dailyMeals={dailyMeals}
-            onDeleteMealClick={(mealId) => { dispatch(deleteMeal(mealId)); }}
+            onDeleteMealClick={meal => this.setState({
+              mealToDelete: meal,
+              deleteMealDialogOpen: true,
+            })}
+            onEditMealClick={meal => this.setState({
+              mealToEdit: meal,
+              addMealDialogOpen: true,
+            })}
           />
         ))}
 
-        <AddMealButton onClick={() => this.setState({ addMealDialogOpen: true })} />
+        <AddMealButton
+          onClick={() => this.setState({
+            addMealDialogOpen: true,
+            mealToEdit: null,
+          })}
+        />
         <AddMealDialog
           isOpen={addMealDialogOpen}
           onCancelClick={() => this.setState({ addMealDialogOpen: false })}
           onAddMealClick={this.handleAddMealClick}
+          onEditMealClick={this.handleEditMealClick}
+          meal={mealToEdit}
+        />
+
+        <DeleteMealDialog
+          isOpen={deleteMealDialogOpen}
+          onCancelClick={() => this.setState({ deleteMealDialogOpen: false })}
+          onDeleteClick={this.handleDeleteMealClick}
+          meal={mealToDelete}
         />
       </AppShell>
     );

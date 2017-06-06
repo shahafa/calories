@@ -84,12 +84,12 @@ const DailyMealsCard = ({
                 <EditIcon
                   color="#9E9E9E"
                   style={styles.editButton}
-                  onClick={() => onEditMealClick(meal.id)}
+                  onClick={() => onEditMealClick(meal)}
                 />
                 <DeleteIcon
                   color="#9E9E9E"
                   style={styles.deleteButton}
-                  onClick={() => onDeleteMealClick(meal.id)}
+                  onClick={() => onDeleteMealClick(meal)}
                 />
               </TableRowColumn>
             </TableRow>

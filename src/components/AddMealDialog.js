@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import uuid from 'uuid/v4';
 import validator from 'validator';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -11,16 +12,46 @@ class AddMealDialog extends Component {
   static propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onAddMealClick: PropTypes.func.isRequired,
+    onEditMealClick: PropTypes.func.isRequired,
     onCancelClick: PropTypes.func.isRequired,
+    meal: PropTypes.object,
   }
 
   state = {
+    id: uuid(),
+    editMode: false,
     date: new Date(),
     time: new Date(),
     meal: '',
     mealErrorText: '',
     calories: '',
     caloriesErrorText: '',
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.meal) {
+      this.state = {
+        editMode: true,
+        id: nextProps.meal.id,
+        date: new Date(nextProps.meal.date),
+        time: new Date(nextProps.meal.date),
+        meal: nextProps.meal.meal,
+        calories: nextProps.meal.calories,
+        mealErrorText: '',
+        caloriesErrorText: '',
+      };
+    } else {
+      this.setState({
+        editMode: false,
+        id: uuid(),
+        date: new Date(),
+        time: new Date(),
+        meal: '',
+        mealErrorText: '',
+        calories: '',
+        caloriesErrorText: '',
+      });
+    }
   }
 
   handleDateChange = (event, date) => {
@@ -46,6 +77,7 @@ class AddMealDialog extends Component {
       return false;
     }
 
+    this.setState({ mealErrorText: '' });
     return true;
   }
 
@@ -56,12 +88,14 @@ class AddMealDialog extends Component {
       return false;
     }
 
+    this.setState({ caloriesErrorText: '' });
     return true;
   }
 
   handleAddMealClick = () => {
     const { onAddMealClick } = this.props;
     const {
+      id,
       date,
       time,
       meal,
@@ -69,32 +103,35 @@ class AddMealDialog extends Component {
     } = this.state;
 
     if (this.validateMeal() && this.validateCalories()) {
-      onAddMealClick(date, time, meal, calories);
-      this.resetState();
+      onAddMealClick(id, date, time, meal, calories);
+    }
+  }
+
+  handleEditMealClick = () => {
+    const { onEditMealClick } = this.props;
+    const {
+      id,
+      date,
+      time,
+      meal,
+      calories,
+    } = this.state;
+
+    if (this.validateMeal() && this.validateCalories()) {
+      onEditMealClick(id, date, time, meal, calories);
     }
   }
 
   handleCancelClick = () => {
     const { onCancelClick } = this.props;
     onCancelClick();
-    this.resetState();
-  }
-
-  resetState = () => {
-    this.setState({
-      date: new Date(),
-      time: new Date(),
-      meal: '',
-      mealErrorText: '',
-      calories: '',
-      caloriesErrorText: '',
-    });
   }
 
   render() {
     const { isOpen } = this.props;
 
     const {
+      editMode,
       date,
       time,
       meal,
@@ -105,7 +142,7 @@ class AddMealDialog extends Component {
 
     return (
       <Dialog
-        title="Add Meal"
+        title={editMode ? 'Edit Meal' : 'Add Meal'}
         contentStyle={{ width: '450px' }}
         actions={[
           <FlatButton
@@ -114,9 +151,9 @@ class AddMealDialog extends Component {
             onTouchTap={this.handleCancelClick}
           />,
           <FlatButton
-            label="Add Meal"
+            label={editMode ? 'Update' : 'Add'}
             primary
-            onTouchTap={this.handleAddMealClick}
+            onTouchTap={editMode ? this.handleEditMealClick : this.handleAddMealClick}
           />,
         ]}
         modal

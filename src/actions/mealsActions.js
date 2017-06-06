@@ -48,3 +48,23 @@ export const deleteMeal = mealId => ({
     ],
   },
 });
+
+export const editMeal = meal => ({
+  [RSAA]: {
+    endpoint: `/meals/${meal.id}`,
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${store.getState().auth.jwtToken}`,
+    },
+    body: JSON.stringify({ meal }),
+    types: [
+      {
+        type: types.EDIT_MEAL_REQUEST,
+        meta: { meal },
+      },
+      types.EDIT_MEAL_SUCCESS,
+      types.EDIT_MEAL_FAILURE,
+    ],
+  },
+});

@@ -6,11 +6,9 @@ import store from '../store';
 import DevTools from './DevTools';
 import PrivateRoute from './PrivateRoute';
 import NoMatch from '../components/NoMatch';
-import Home from './Home';
+import Login from './Login';
+import Signup from './Signup';
 import Meals from './Meals';
-
-const LoginPage = props => <Home mode="login" {...props} />;
-const SignupPage = props => <Home mode="signup" {...props} />;
 
 const App = () => (
   <Provider store={store}>
@@ -18,9 +16,9 @@ const App = () => (
       <Router basename="/">
         <div>
           <Switch>
-            <Route exact path="/" component={LoginPage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/signup" component={SignupPage} />
+            <Route exact path="/" component={Login} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
             <PrivateRoute path="/meals" component={Meals} />
             <Route component={NoMatch} />
           </Switch>
