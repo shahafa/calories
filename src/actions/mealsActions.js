@@ -68,3 +68,7 @@ export const editMeal = meal => ({
     ],
   },
 });
+
+export const closeMealsErrorSnackbar = () => ({
+  type: types.CLOSE_MEALS_ERROR_SNACKBAR,
+});

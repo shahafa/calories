@@ -78,6 +78,11 @@ const Signup = ({
       floatingLabelText="Email address"
       errorText={emailErrorText}
       onBlur={onEmailBlur}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter') {
+          onSignupButtonClick();
+        }
+      }}
     />
 
     <TextField
@@ -88,6 +93,11 @@ const Signup = ({
       floatingLabelText="Password"
       errorText={passwordErrorText}
       onBlur={onPasswordBlur}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter') {
+          onSignupButtonClick();
+        }
+      }}
     />
 
     <div style={styles.error}>{errorText}</div>

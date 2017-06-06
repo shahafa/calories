@@ -18,6 +18,7 @@ const styles = {
   },
 
   container: {
+    display: 'flex',
     flex: 1,
     overflowY: 'auto',
   },

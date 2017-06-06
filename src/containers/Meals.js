@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { getMeals, addMeal, deleteMeal, editMeal } from '../actions/mealsActions';
+import Snackbar from 'material-ui/Snackbar';
+import { getMeals, addMeal, deleteMeal, editMeal, closeMealsErrorSnackbar } from '../actions/mealsActions';
 import { mealsGroupByDaySelector } from '../selectors';
 import AppShell from '../components/AppShell';
 import DailyMealsCard from '../components/DailyMealsCard';
 import AddMealButton from '../components/AddMealButton';
 import AddMealDialog from '../components/AddMealDialog';
 import DeleteMealDialog from '../components/DeleteMealDialog';
+import NoMeals from '../components/NoMeals';
 
 class Meals extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     dailyMealsList: PropTypes.array.isRequired,
+    mealsErrorSnackbarOpen: PropTypes.bool.isRequired,
+    mealsErrorText: PropTypes.string.isRequired,
   }
 
   state = {
@@ -21,6 +25,8 @@ class Meals extends Component {
     deleteMealDialogOpen: false,
     mealToDelete: null,
     mealToEdit: null,
+    mealsActionError: false,
+    mealsActionErrorText: '',
   }
 
   componentDidMount() {
@@ -75,7 +81,12 @@ class Meals extends Component {
   }
 
   render() {
-    const { dailyMealsList } = this.props;
+    const {
+      dispatch,
+      dailyMealsList,
+      mealsErrorSnackbarOpen,
+      mealsErrorText,
+    } = this.props;
 
     const {
       addMealDialogOpen,
@@ -86,20 +97,24 @@ class Meals extends Component {
 
     return (
       <AppShell>
-        {dailyMealsList.map(dailyMeals => (
-          <DailyMealsCard
-            key={dailyMeals.date}
-            dailyMeals={dailyMeals}
-            onDeleteMealClick={meal => this.setState({
-              mealToDelete: meal,
-              deleteMealDialogOpen: true,
-            })}
-            onEditMealClick={meal => this.setState({
-              mealToEdit: meal,
-              addMealDialogOpen: true,
-            })}
-          />
-        ))}
+        {dailyMealsList.length === 0 ?
+          <NoMeals />
+        :
+          dailyMealsList.map(dailyMeals => (
+            <DailyMealsCard
+              key={dailyMeals.date}
+              dailyMeals={dailyMeals}
+              onDeleteMealClick={meal => this.setState({
+                mealToDelete: meal,
+                deleteMealDialogOpen: true,
+              })}
+              onEditMealClick={meal => this.setState({
+                mealToEdit: meal,
+                addMealDialogOpen: true,
+              })}
+            />
+          ))
+        }
 
         <AddMealButton
           onClick={() => this.setState({
@@ -121,12 +136,21 @@ class Meals extends Component {
           onDeleteClick={this.handleDeleteMealClick}
           meal={mealToDelete}
         />
+
+        <Snackbar
+          open={mealsErrorSnackbarOpen}
+          message={mealsErrorText}
+          autoHideDuration={4000}
+          onRequestClose={() => dispatch(closeMealsErrorSnackbar())}
+        />
       </AppShell>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  mealsErrorSnackbarOpen: state.meals.mealsErrorSnackbarOpen,
+  mealsErrorText: state.meals.mealsErrorText,
   dailyMealsList: mealsGroupByDaySelector(state),
 });
 
