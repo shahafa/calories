@@ -5,6 +5,7 @@ import { grey600 } from 'material-ui/styles/colors';
 
 const styles = {
   list: {
+    position: 'absolute',
     width: '230px',
   },
 

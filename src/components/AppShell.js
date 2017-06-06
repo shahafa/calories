@@ -40,7 +40,6 @@ const styles = {
 };
 
 const AppShell = ({
-  history,
   children,
 }) => (
   <div style={styles.root}>
@@ -49,9 +48,7 @@ const AppShell = ({
     </div>
 
     <div style={styles.container}>
-      <Navigation
-        history={history}
-      />
+      <Navigation />
 
       {children}
     </div>
@@ -59,7 +56,6 @@ const AppShell = ({
 );
 
 AppShell.propTypes = {
-  history: PropTypes.object.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.func,

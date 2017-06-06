@@ -5,7 +5,7 @@ import moment from 'moment';
 import Snackbar from 'material-ui/Snackbar';
 import { getMeals, addMeal, deleteMeal, editMeal, closeMealsErrorSnackbar } from '../actions/mealsActions';
 import { mealsGroupByDaySelector } from '../selectors';
-import AppShell from '../components/AppShell';
+import Main from '../components/Main';
 import DailyMealsCard from '../components/DailyMealsCard';
 import AddMealButton from '../components/AddMealButton';
 import AddMealDialog from '../components/AddMealDialog';
@@ -14,7 +14,6 @@ import NoMeals from '../components/NoMeals';
 
 class Meals extends Component {
   static propTypes = {
-    history: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     dailyMealsList: PropTypes.array.isRequired,
     mealsErrorSnackbarOpen: PropTypes.bool.isRequired,
@@ -83,7 +82,6 @@ class Meals extends Component {
 
   render() {
     const {
-      history,
       dispatch,
       dailyMealsList,
       mealsErrorSnackbarOpen,
@@ -98,7 +96,7 @@ class Meals extends Component {
     } = this.state;
 
     return (
-      <AppShell history={history}>
+      <Main>
         {dailyMealsList.length === 0 ?
           <NoMeals />
         :
@@ -124,6 +122,7 @@ class Meals extends Component {
             mealToEdit: null,
           })}
         />
+
         <AddMealDialog
           isOpen={addMealDialogOpen}
           onCancelClick={() => this.setState({ addMealDialogOpen: false })}
@@ -145,7 +144,7 @@ class Meals extends Component {
           autoHideDuration={4000}
           onRequestClose={() => dispatch(closeMealsErrorSnackbar())}
         />
-      </AppShell>
+      </Main>
     );
   }
 }

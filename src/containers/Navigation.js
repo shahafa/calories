@@ -1,26 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import NavigationMenu from '../components/NavigationMenu';
 
 const Navigation = ({
   history,
+  location,
 }) => (
   <NavigationMenu
-    mealsActive={history.location.pathname === '/meals'}
-    usersActive={history.location.pathname === '/users'}
-    settingsActive={history.location.pathname === '/settings'}
+    mealsActive={location.pathname === '/meals'}
+    usersActive={location.pathname === '/users'}
+    settingsActive={location.pathname === '/settings'}
     onMealsClick={() => {
-      if (history.location.pathname !== '/meals') {
+      if (location.pathname !== '/meals') {
         history.push('/meals');
       }
     }}
     onUsersClick={() => {
-      if (history.location.pathname !== '/users') {
+      if (location.pathname !== '/users') {
         history.push('/users');
       }
     }}
     onSettingsClick={() => {
-      if (history.location.pathname !== '/settings') {
+      if (location.pathname !== '/settings') {
         history.push('/settings');
       }
     }}
@@ -29,7 +32,8 @@ const Navigation = ({
 );
 
 Navigation.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object,
+  location: PropTypes.object,
 };
 
-export default Navigation;
+export default withRouter(connect()(Navigation));
