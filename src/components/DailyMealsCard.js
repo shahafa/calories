@@ -5,23 +5,12 @@ import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { Card } from 'material-ui/Card';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
-import { green600, green300 } from 'material-ui/styles/colors';
+import { red600, red300, green600, green300 } from 'material-ui/styles/colors';
 
 const styles = {
   root: {
     margin: '50px auto 0 auto',
     maxWidth: '720px',
-  },
-
-  header: {
-    boxSizing: 'border-box',
-    height: '55px',
-    padding: '16px',
-    background: `linear-gradient(to right, ${green600}, ${green300})`,
-    color: 'white',
-    fontSize: '14px',
-    lineHeight: '20px',
-    fontWeight: '300',
   },
 
   editButton: {
@@ -38,14 +27,30 @@ const styles = {
   },
 };
 
+const totalCalories = meals => meals.reduce((sum, meal) => sum + meal.calories, 0);
+
+const headerStyle = (meal, numberOfCaloriesPerDay) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  boxSizing: 'border-box',
+  height: '55px',
+  padding: '16px',
+  background: numberOfCaloriesPerDay && totalCalories(meal) > numberOfCaloriesPerDay ? `linear-gradient(to right, ${red600}, ${red300})` : `linear-gradient(to right, ${green600}, ${green300})`,
+  color: 'white',
+  fontSize: '14px',
+  lineHeight: '20px',
+  fontWeight: '300',
+});
+
 const DailyMealsCard = ({
   dailyMeals,
   onEditMealClick,
   onDeleteMealClick,
+  numberOfCaloriesPerDay,
 }) => (
   <div style={styles.root}>
     <Card>
-      <div style={styles.header}>
+      <div style={headerStyle(dailyMeals.meals, numberOfCaloriesPerDay)}>
         <div>
           {dailyMeals.date.calendar(null, {
             sameDay: '[Today]',
@@ -55,6 +60,10 @@ const DailyMealsCard = ({
             lastWeek: 'MMMM D',
             sameElse: 'MMMM D',
           })}
+        </div>
+
+        <div>
+          {`Total Calories: ${totalCalories(dailyMeals.meals)}`}
         </div>
       </div>
       <Table>
@@ -104,6 +113,7 @@ DailyMealsCard.propTypes = {
   dailyMeals: PropTypes.object.isRequired,
   onEditMealClick: PropTypes.func.isRequired,
   onDeleteMealClick: PropTypes.func.isRequired,
+  numberOfCaloriesPerDay: PropTypes.number,
 };
 
 export default DailyMealsCard;

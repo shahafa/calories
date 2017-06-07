@@ -56,7 +56,7 @@ class SettingsForm extends Component {
     super(props);
 
     this.state = {
-      calories: props.settings ? props.settings.numberOfCaloriesPerDay : null,
+      calories: props.settings ? props.settings.numberOfCaloriesPerDay : '',
       caloriesErrorText: '',
     };
   }

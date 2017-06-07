@@ -12,6 +12,7 @@ const styles = {
   },
 
   appBar: {
+    textAlign: 'center',
     boxSizing: 'border-box',
     width: '100%',
     height: '64px',
@@ -44,7 +45,7 @@ const AppShell = ({
 }) => (
   <div style={styles.root}>
     <div style={styles.appBar}>
-      Meals
+      Calories Tracker
     </div>
 
     <div style={styles.container}>

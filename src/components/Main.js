@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const style = {
   flex: '1',
   display: 'flex',
+  flexDirection: 'column',
 };
 
 const Main = ({

@@ -10,7 +10,7 @@ import Loading from '../components/Loading';
 class Settings extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    settings: PropTypes.object.isRequired,
+    settings: PropTypes.object,
     isLoading: PropTypes.bool.isRequired,
     settingsErrorSnackbarOpen: PropTypes.bool.isRequired,
     settingsErrorText: PropTypes.string.isRequired,

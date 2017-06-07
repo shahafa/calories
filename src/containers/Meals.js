@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import Snackbar from 'material-ui/Snackbar';
 import { getMeals, addMeal, deleteMeal, editMeal, closeMealsErrorSnackbar } from '../actions/mealsActions';
+import { getSettings } from '../actions/settingsActions';
 import { mealsGroupByDaySelector } from '../selectors';
 import Main from '../components/Main';
 import DailyMealsCard from '../components/DailyMealsCard';
@@ -20,6 +21,7 @@ class Meals extends Component {
     dailyMealsList: PropTypes.array.isRequired,
     mealsErrorSnackbarOpen: PropTypes.bool.isRequired,
     mealsErrorText: PropTypes.string.isRequired,
+    numberOfCaloriesPerDay: PropTypes.number,
   }
 
   state = {
@@ -34,6 +36,7 @@ class Meals extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getMeals());
+    dispatch(getSettings());
   }
 
   handleAddMealClick = (id, date, time, meal, calories) => {
@@ -89,6 +92,7 @@ class Meals extends Component {
       dailyMealsList,
       mealsErrorSnackbarOpen,
       mealsErrorText,
+      numberOfCaloriesPerDay,
     } = this.props;
 
     const {
@@ -119,6 +123,7 @@ class Meals extends Component {
                 mealToEdit: meal,
                 addMealDialogOpen: true,
               })}
+              numberOfCaloriesPerDay={numberOfCaloriesPerDay}
             />
           ))
         }
@@ -161,6 +166,7 @@ const mapStateToProps = state => ({
   mealsErrorText: state.meals.mealsErrorText,
   dailyMealsList: mealsGroupByDaySelector(state),
   isLoading: state.meals.isLoading,
+  numberOfCaloriesPerDay: state.settings.settings ? state.settings.settings.numberOfCaloriesPerDay : null,
 });
 
 export default connect(
