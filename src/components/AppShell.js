@@ -12,7 +12,6 @@ const styles = {
   },
 
   appBar: {
-    textAlign: 'center',
     boxSizing: 'border-box',
     width: '100%',
     height: '64px',

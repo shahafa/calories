@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import validator from 'validator';
 import { resetAuthStore, signup } from '../actions/authActions';
 import HomeShell from '../components/HomeShell';
 import SignupForm from '../components/SignupForm';
@@ -11,16 +10,9 @@ class Signup extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
     isSigningUp: PropTypes.bool.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
     errorText: PropTypes.string.isRequired,
-  }
-
-  state = {
-    email: '',
-    emailErrorText: '',
-    password: '',
-    passwordErrorText: '',
   }
 
   componentDidMount() {
@@ -28,59 +20,12 @@ class Signup extends Component {
     dispatch(resetAuthStore());
   }
 
-  handleEmailChange = (event) => {
-    this.setState({ email: event.target.value });
-  };
-
-  handlePasswordChange = (event) => {
-    this.setState({ password: event.target.value });
-  };
-
-  validateEmail = () => {
-    const { email } = this.state;
-    if (validator.isEmpty(email)) {
-      this.setState({ emailErrorText: 'Email address cannot be blank' });
-      return false;
-    } else if (!validator.isEmail(email)) {
-      this.setState({ emailErrorText: 'Email address is not valid' });
-      return false;
-    }
-
-    this.setState({ emailErrorText: '' });
-    return true;
-  };
-
-  validatePassword = () => {
-    const { password } = this.state;
-    if (validator.isEmpty(password)) {
-      this.setState({ passwordErrorText: 'Password cannot be blank' });
-      return false;
-    }
-
-    this.setState({ passwordErrorText: '' });
-    return true;
-  }
-
-  handleSignupButtonClick = () => {
+  handleSignupButtonClick = (email, password) => {
     const { dispatch } = this.props;
-    const {
-      email,
-      password,
-    } = this.state;
-
-    if (this.validateEmail() && this.validatePassword()) {
-      dispatch(signup(email, password));
-    }
+    dispatch(signup(email, password));
   }
 
   render() {
-    const {
-      email,
-      emailErrorText,
-      password,
-      passwordErrorText,
-    } = this.state;
-
     const {
       history,
       isSigningUp,
@@ -97,14 +42,6 @@ class Signup extends Component {
         <SignupForm
           isSigningUp={isSigningUp}
           errorText={errorText}
-          email={email}
-          emailErrorText={emailErrorText}
-          onEmailChange={this.handleEmailChange}
-          onEmailBlur={this.validateEmail}
-          password={password}
-          passwordErrorText={passwordErrorText}
-          onPasswordChange={this.handlePasswordChange}
-          onPasswordBlur={this.validatePassword}
           onSignupButtonClick={this.handleSignupButtonClick}
           onLoginClick={() => history.push('/login')}
         />

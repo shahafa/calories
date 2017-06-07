@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import validator from 'validator';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -54,94 +55,142 @@ const styles = {
   },
 };
 
-const Login = ({
-  isAuthenticating,
-  errorText,
-  email,
-  emailErrorText,
-  onEmailChange,
-  onEmailBlur,
-  password,
-  passwordErrorText,
-  onPasswordChange,
-  onPasswordBlur,
-  onLoginButtonClick,
-  onGetStartedClick,
-}) => (
-  <div style={styles.container}>
-    <div style={styles.logo}>Welcome!</div>
+class LoginForm extends Component {
+  static propTypes = {
+    isAuthenticating: PropTypes.bool.isRequired,
+    errorText: PropTypes.string.isRequired,
+    onLoginButtonClick: PropTypes.func.isRequired,
+    onGetStartedClick: PropTypes.func.isRequired,
+  }
 
-    <TextField
-      value={email}
-      fullWidth
-      onChange={onEmailChange}
-      floatingLabelText="Email address"
-      errorText={emailErrorText}
-      onBlur={onEmailBlur}
-      onKeyPress={(e) => {
-        if (e.key === 'Enter') {
-          onLoginButtonClick();
-        }
-      }}
-    />
+  state = {
+    email: '',
+    emailErrorText: '',
+    password: '',
+    passwordErrorText: '',
+  }
 
-    <TextField
-      type="password"
-      value={password}
-      fullWidth
-      onChange={onPasswordChange}
-      floatingLabelText="Password"
-      errorText={passwordErrorText}
-      onBlur={onPasswordBlur}
-      onKeyPress={(e) => {
-        if (e.key === 'Enter') {
-          onLoginButtonClick();
-        }
-      }}
-    />
+  handleEmailChange = (event) => {
+    this.setState({ email: event.target.value });
+  };
 
-    <div style={styles.error}>{errorText}</div>
+  handlePasswordChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
 
-    <RaisedButton
-      style={styles.loginButton}
-      primary
-      onClick={onLoginButtonClick}
-      disabled={isAuthenticating}
-    >
-      {isAuthenticating ?
-        <CircularProgress color="white" size={25} />
-      :
-        <div style={styles.loginButton.text}>Login</div>
-      }
-    </RaisedButton>
+  validateEmail = () => {
+    const { email } = this.state;
+    if (validator.isEmpty(email)) {
+      this.setState({ emailErrorText: 'Email address cannot be blank' });
+      return false;
+    } else if (!validator.isEmail(email)) {
+      this.setState({ emailErrorText: 'Email address is not valid' });
+      return false;
+    }
 
-    <div style={styles.getStarted}>
-      {"Don't have an account? "}
-      <span
-        style={styles.link}
-        onClick={onGetStartedClick}
-        role="button"
-        tabIndex={0}
-      >
-        Get Started
-      </span>
-    </div>
-  </div>
-);
+    this.setState({ emailErrorText: '' });
+    return true;
+  };
 
-Login.propTypes = {
-  isAuthenticating: PropTypes.bool.isRequired,
-  errorText: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  emailErrorText: PropTypes.string.isRequired,
-  onEmailChange: PropTypes.func.isRequired,
-  onEmailBlur: PropTypes.func.isRequired,
-  password: PropTypes.string.isRequired,
-  passwordErrorText: PropTypes.string.isRequired,
-  onPasswordChange: PropTypes.func.isRequired,
-  onPasswordBlur: PropTypes.func.isRequired,
-  onLoginButtonClick: PropTypes.func.isRequired,
-  onGetStartedClick: PropTypes.func.isRequired,
-};
+  validatePassword = () => {
+    const { password } = this.state;
+    if (validator.isEmpty(password)) {
+      this.setState({ passwordErrorText: 'Password cannot be blank' });
+      return false;
+    }
 
-export default Login;
+    this.setState({ passwordErrorText: '' });
+    return true;
+  }
+
+  handleLoginButtonClick = () => {
+    const { onLoginButtonClick } = this.props;
+    const {
+      email,
+      password,
+    } = this.state;
+
+    if (this.validateEmail() && this.validatePassword()) {
+      onLoginButtonClick(email, password);
+    }
+  }
+
+  render() {
+    const {
+      email,
+      emailErrorText,
+      password,
+      passwordErrorText,
+    } = this.state;
+
+    const {
+      onGetStartedClick,
+      isAuthenticating,
+      errorText,
+    } = this.props;
+
+    return (
+      <div style={styles.container}>
+        <div style={styles.logo}>Welcome!</div>
+
+        <TextField
+          value={email}
+          fullWidth
+          onChange={this.handleEmailChange}
+          floatingLabelText="Email address"
+          errorText={emailErrorText}
+          onBlur={this.validateEmail}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              this.handleLoginButtonClick();
+            }
+          }}
+        />
+
+        <TextField
+          type="password"
+          value={password}
+          fullWidth
+          onChange={this.handlePasswordChange}
+          floatingLabelText="Password"
+          errorText={passwordErrorText}
+          onBlur={this.validatePassword}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              this.handleLoginButtonClick();
+            }
+          }}
+        />
+
+        <div style={styles.error}>{errorText}</div>
+
+        <RaisedButton
+          style={styles.loginButton}
+          primary
+          onClick={this.handleLoginButtonClick}
+          disabled={isAuthenticating}
+        >
+          {isAuthenticating ?
+            <CircularProgress color="white" size={25} />
+          :
+            <div style={styles.loginButton.text}>Login</div>
+          }
+        </RaisedButton>
+
+        <div style={styles.getStarted}>
+          {"Don't have an account? "}
+          <span
+            style={styles.link}
+            onClick={onGetStartedClick}
+            role="button"
+            tabIndex={0}
+          >
+            Get Started
+          </span>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default LoginForm;
