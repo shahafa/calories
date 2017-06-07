@@ -23,6 +23,7 @@ const meals = (state = initialState, action) => {
       });
     case types.GET_MEALS_FAILURE:
       return Object.assign({}, state, {
+        isLoading: false,
         mealsErrorSnackbarOpen: true,
         mealsErrorText: 'Something went wrong :( please refresh the page',
       });
