@@ -7,6 +7,7 @@ import { getMeals, addMeal, deleteMeal, editMeal, closeMealsErrorSnackbar } from
 import { getSettings } from '../actions/settingsActions';
 import { mealsGroupByDaySelector } from '../selectors';
 import Main from '../components/Main';
+import Filter from '../components/Filter';
 import DailyMealsCard from '../components/DailyMealsCard';
 import AddMealButton from '../components/AddMealButton';
 import AddMealDialog from '../components/AddMealDialog';
@@ -108,6 +109,8 @@ class Meals extends Component {
 
     return (
       <Main>
+        <Filter />
+
         {dailyMealsList.length === 0 ?
           <NoMeals />
         :

@@ -163,6 +163,7 @@ class AddMealDialog extends Component {
           <DatePicker
             style={{ marginBottom: '25px' }}
             hintText="Date"
+            container="inline"
             fullWidth
             value={date}
             onChange={this.handleDateChange}

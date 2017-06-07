@@ -9,7 +9,7 @@ import { red600, red300, green600, green300 } from 'material-ui/styles/colors';
 
 const styles = {
   root: {
-    margin: '50px auto 0 auto',
+    margin: '25px auto 25px auto',
     maxWidth: '720px',
   },
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cyanA700 } from 'material-ui/styles/colors';
+import { cyanA700, cyanA400 } from 'material-ui/styles/colors';
 import Navigation from '../containers/Navigation';
 
 const styles = {
@@ -15,7 +15,7 @@ const styles = {
     boxSizing: 'border-box',
     width: '100%',
     height: '64px',
-    backgroundColor: cyanA700,
+    background: `linear-gradient(to right, ${cyanA700}, ${cyanA400})`,
     boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
     color: 'white',
     fontSize: '26px',
