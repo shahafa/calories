@@ -8,7 +8,7 @@ import { grey900, grey600 } from 'material-ui/styles/colors';
 
 const styles = {
   root: {
-    margin: '25px auto 0 auto',
+    margin: '30px auto 0 auto',
     maxWidth: '640px',
   },
 
@@ -67,7 +67,7 @@ class SettingsForm extends Component {
 
   validateCalories = () => {
     const { calories } = this.state;
-    if (!validator.isNumeric(calories)) {
+    if (!validator.isNumeric(calories.toString())) {
       this.setState({ caloriesErrorText: 'Please enter a valid Calories number' });
       return false;
     }
