@@ -1,36 +1,38 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
-import FilterIcon from 'material-ui/svg-icons/content/filter-list';
-import ClearIcon from 'material-ui/svg-icons/content/clear';
+import FlatButton from 'material-ui/FlatButton';
 import { grey600 } from 'material-ui/styles/colors';
 
 const styles = {
-  root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '25px auto 35px auto',
-    maxWidth: '720px',
-    width: '720px',
+  container: {
+    margin: '25px auto 30px auto',
+    maxWidth: '640px',
+    width: '640px',
   },
 
-  container: {
+  root: {
     display: 'flex',
   },
 
   title: {
-    marginLeft: '6px',
+    marginRight: '6px',
     lineHeight: '26px',
     fontSize: '13px',
-    fontWeight: '300',
     color: grey600,
   },
 
   picker: {
+    marginRight: '6px',
     width: '65px',
     marginTop: '-11px',
-    marginLeft: '6px',
     textAlign: 'center',
+
+    inputStyle: {
+      textAlign: 'center',
+      width: '65px',
+    },
 
     textareaStyle: {
       textAlign: 'center',
@@ -40,14 +42,12 @@ const styles = {
     dateTextFieldStyle: {
       textAlign: 'center',
       fontSize: '13px',
-      fontWeight: '300',
       width: '65px',
     },
 
     timeTextFieldStyle: {
       textAlign: 'center',
       fontSize: '13px',
-      fontWeight: '300',
       width: '65px',
     },
 
@@ -56,41 +56,90 @@ const styles = {
       textAlign: 'center',
       color: grey600,
       fontSize: '13px',
-      fontWeight: '300',
     },
   },
 
-  clear: {
-    cursor: 'pointer',
-    marginLeft: '15px',
+  buttons: {
+    display: 'flex',
+    marginLeft: '-15px',
+
+    labelStyle: {
+      fontSize: '13px',
+    },
   },
 };
 
 class Filter extends Component {
-  state = {
-    fromDate: null,
-    fromTime: null,
-    toDate: null,
-    toTime: null,
+  static propTypes = {
+    filter: PropTypes.object.isRequired,
+    onFilterUpdate: PropTypes.func.isRequired,
+  }
+
+  constructor(props) {
+    super(props);
+
+    const { filter } = this.props;
+    this.state = {
+      fromDate: filter.fromDate === null ? null : new Date(filter.fromDate),
+      fromTime: filter.fromTime === null ? null : new Date(filter.fromTime),
+      toDate: filter.toDate === null ? null : new Date(filter.toDate),
+      toTime: filter.toTime === null ? null : new Date(filter.toTime),
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { filter } = nextProps;
+    this.state = {
+      fromDate: filter.fromDate === null ? null : new Date(filter.fromDate),
+      fromTime: filter.fromTime === null ? null : new Date(filter.fromTime),
+      toDate: filter.toDate === null ? null : new Date(filter.toDate),
+      toTime: filter.toTime === null ? null : new Date(filter.toTime),
+    };
   }
 
   handleFromDateChange = (event, date) => {
-    this.setState({ fromDate: date });
+    const { onFilterUpdate } = this.props;
+    onFilterUpdate({
+      fromDate: date,
+      fromTime: this.state.fromTime,
+      toDate: this.state.toDate,
+      toTime: this.state.toTime,
+    });
   };
 
   handleFromTimeChange = (event, time) => {
-    this.setState({ fromTime: time });
+    const { onFilterUpdate } = this.props;
+    onFilterUpdate({
+      fromDate: this.state.fromDate,
+      fromTime: time,
+      toDate: this.state.toDate,
+      toTime: this.state.toTime,
+    });
   };
 
   handleToDateChange = (event, date) => {
-    this.setState({ toDate: date });
+    const { onFilterUpdate } = this.props;
+    onFilterUpdate({
+      fromDate: this.state.fromDate,
+      fromTime: this.state.fromTime,
+      toDate: date,
+      toTime: this.state.toTime,
+    });
   };
 
   handleToTimeChange = (event, time) => {
-    this.setState({ toTime: time });
+    const { onFilterUpdate } = this.props;
+    onFilterUpdate({
+      fromDate: this.state.fromDate,
+      fromTime: this.state.fromTime,
+      toDate: this.state.toDate,
+      toTime: time,
+    });
   };
 
   render() {
+    const { onFilterUpdate } = this.props;
+
     const {
       fromDate,
       fromTime,
@@ -99,17 +148,16 @@ class Filter extends Component {
     } = this.state;
 
     return (
-      <div style={styles.root}>
-        <div style={styles.container}>
-          <FilterIcon color={grey600} />
-
-          <div style={styles.title}>Filter meals From</div>
+      <div style={styles.container}>
+        <div style={styles.root}>
+          <div style={styles.title}>Show meals from</div>
 
           <DatePicker
             style={styles.picker}
             textFieldStyle={styles.picker.dateTextFieldStyle}
             hintStyle={styles.picker.hintStyle}
             textareaStyle={styles.picker.textareaStyle}
+            inputStyle={styles.picker.inputStyle}
             value={fromDate}
             onChange={this.handleFromDateChange}
             hintText="Any Date"
@@ -122,6 +170,7 @@ class Filter extends Component {
             textFieldStyle={styles.picker.timeTextFieldStyle}
             hintStyle={styles.picker.hintStyle}
             textareaStyle={styles.picker.textareaStyle}
+            inputStyle={styles.picker.inputStyle}
             value={fromTime}
             onChange={this.handleFromTimeChange}
             hintText="Any Time"
@@ -133,6 +182,7 @@ class Filter extends Component {
             style={styles.picker}
             textFieldStyle={styles.picker.dateTextFieldStyle}
             hintStyle={styles.picker.hintStyle}
+            inputStyle={styles.picker.inputStyle}
             value={toDate}
             onChange={this.handleToDateChange}
             hintText="Any Date"
@@ -144,14 +194,25 @@ class Filter extends Component {
             style={styles.picker}
             textFieldStyle={styles.picker.timeTextFieldStyle}
             hintStyle={styles.picker.hintStyle}
+            inputStyle={styles.picker.inputStyle}
             value={toTime}
             onChange={this.handleToTimeChange}
             hintText="Any Time"
           />
         </div>
 
-        <div>
-          <ClearIcon color={grey600} style={styles.clear} />
+        <div style={styles.buttons}>
+          <FlatButton
+            labelStyle={styles.buttons.labelStyle}
+            label="Clear Filter"
+            disabled={!fromDate && !fromTime && !toDate && !toTime}
+            onClick={() => onFilterUpdate({
+              fromDate: null,
+              fromTime: null,
+              toDate: null,
+              toTime: null,
+            })}
+          />
         </div>
       </div>
     );

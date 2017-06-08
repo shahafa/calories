@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Snackbar from 'material-ui/Snackbar';
-import { getMeals, addMeal, deleteMeal, editMeal, closeMealsErrorSnackbar } from '../actions/mealsActions';
+import { getMeals, addMeal, deleteMeal, editMeal, closeMealsErrorSnackbar, setFilter } from '../actions/mealsActions';
 import { getSettings } from '../actions/settingsActions';
 import { mealsGroupByDaySelector } from '../selectors';
 import Main from '../components/Main';
@@ -22,6 +22,7 @@ class Meals extends Component {
     dailyMealsList: PropTypes.array.isRequired,
     mealsErrorSnackbarOpen: PropTypes.bool.isRequired,
     mealsErrorText: PropTypes.string.isRequired,
+    filter: PropTypes.object.isRequired,
     numberOfCaloriesPerDay: PropTypes.number,
   }
 
@@ -86,6 +87,11 @@ class Meals extends Component {
     this.setState({ deleteMealDialogOpen: false });
   }
 
+  handleApplyFilterClick = (filter) => {
+    const { dispatch } = this.props;
+    dispatch(setFilter(filter));
+  }
+
   render() {
     const {
       dispatch,
@@ -93,6 +99,7 @@ class Meals extends Component {
       dailyMealsList,
       mealsErrorSnackbarOpen,
       mealsErrorText,
+      filter,
       numberOfCaloriesPerDay,
     } = this.props;
 
@@ -109,7 +116,10 @@ class Meals extends Component {
 
     return (
       <Main>
-        <Filter />
+        <Filter
+          filter={filter}
+          onFilterUpdate={this.handleApplyFilterClick}
+        />
 
         {dailyMealsList.length === 0 ?
           <NoMeals />
@@ -169,7 +179,10 @@ const mapStateToProps = state => ({
   mealsErrorText: state.meals.mealsErrorText,
   dailyMealsList: mealsGroupByDaySelector(state),
   isLoading: state.meals.isLoading,
-  numberOfCaloriesPerDay: state.settings.settings ? state.settings.settings.numberOfCaloriesPerDay : null,
+  filter: state.meals.filter,
+  numberOfCaloriesPerDay: state.settings.settings
+    ? state.settings.settings.numberOfCaloriesPerDay
+    : null,
 });
 
 export default connect(

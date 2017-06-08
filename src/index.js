@@ -17,13 +17,7 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-// // HMR
-// if (module.hot) {
-//   module.hot.accept('./containers/App', () => {
-//     ReactDOM.render(<App />, document.getElementById('root'));
-//   });
-// }
-
+// HMR
 if (module.hot) {
   module.hot.accept('./containers/App', () => {
     ReactDOM.render(

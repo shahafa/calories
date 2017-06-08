@@ -8,8 +8,8 @@ import { grey900, grey600 } from 'material-ui/styles/colors';
 
 const styles = {
   root: {
-    margin: '50px auto 0 auto',
-    maxWidth: '720px',
+    margin: '25px auto 0 auto',
+    maxWidth: '640px',
   },
 
   card: {

@@ -11,6 +11,7 @@ const styles = {
   list: {
     position: 'absolute',
     width: '230px',
+    marginTop: '5px',
   },
 
   listItem: {

@@ -72,3 +72,8 @@ export const editMeal = meal => ({
 export const closeMealsErrorSnackbar = () => ({
   type: types.CLOSE_MEALS_ERROR_SNACKBAR,
 });
+
+export const setFilter = filter => ({
+  type: types.SET_FILTER,
+  filter,
+});

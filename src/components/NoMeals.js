@@ -7,6 +7,7 @@ const style = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
+  marginTop: '-125px',
   color: grey600,
   fontSize: '20px',
   fontWeight: '300',
@@ -15,7 +16,7 @@ const style = {
 const NoMeals = () => (
   <div style={style}>
     <div>Hey, your meals report is empty :(</div>
-    <div style={{ marginTop: '20px' }}>Use the add button to add a new meal</div>
+    <div style={{ marginTop: '20px' }}>Check the filter or use the add button to add a new meal</div>
   </div>
 );
 

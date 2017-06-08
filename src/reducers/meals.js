@@ -5,6 +5,12 @@ const initialState = {
   meals: [],
   mealsErrorSnackbarOpen: false,
   mealsErrorText: '',
+  filter: {
+    fromDate: null,
+    fromTime: null,
+    toDate: null,
+    toTime: null,
+  },
 };
 
 let lastMeals = [];
@@ -77,12 +83,13 @@ const meals = (state = initialState, action) => {
         mealsErrorText: 'Failed to update meal. please try again',
       });
 
-    case types.CLOSE_MEALS_ERROR_SNACKBAR: {
+    case types.CLOSE_MEALS_ERROR_SNACKBAR:
       return Object.assign({}, state, {
         mealsErrorSnackbarOpen: false,
         mealsErrorText: '',
       });
-    }
+    case types.SET_FILTER:
+      return Object.assign({}, state, { filter: action.filter });
     default:
       return state;
   }
