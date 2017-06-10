@@ -37,6 +37,11 @@ const snackBar = (state = initialState, action) => {
         isOpen: true,
         message: 'Something went wrong :( please refresh the page',
       });
+    case types.SET_SETTINGS_SUCCESS:
+      return Object.assign({}, state, {
+        isOpen: true,
+        message: 'Settings updated successfully',
+      });
     case types.SET_SETTINGS_FAILURE:
       return Object.assign({}, state, {
         isOpen: true,
