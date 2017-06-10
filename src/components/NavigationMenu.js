@@ -28,6 +28,7 @@ const styles = {
 };
 
 const NavigationMenu = ({
+  userRole,
   mealsActive,
   usersActive,
   settingsActive,
@@ -44,12 +45,14 @@ const NavigationMenu = ({
       onClick={onMealsClick}
     />
 
-    <ListItem
-      style={Object.assign({}, styles.listItem, usersActive ? styles.active : {})}
-      primaryText="Users Management"
-      leftIcon={<UserIcon color={usersActive ? '#3367d6' : grey600} />}
-      onClick={onUsersClick}
-    />
+    {(userRole === 'admin' || userRole === 'userManager') &&
+      <ListItem
+        style={Object.assign({}, styles.listItem, usersActive ? styles.active : {})}
+        primaryText="Users Management"
+        leftIcon={<UserIcon color={usersActive ? '#3367d6' : grey600} />}
+        onClick={onUsersClick}
+      />
+    }
 
     <ListItem
       style={Object.assign({}, styles.listItem, settingsActive ? styles.active : {})}
@@ -68,6 +71,7 @@ const NavigationMenu = ({
 );
 
 NavigationMenu.propTypes = {
+  userRole: PropTypes.string.isRequired,
   mealsActive: PropTypes.bool.isRequired,
   usersActive: PropTypes.bool.isRequired,
   settingsActive: PropTypes.bool.isRequired,

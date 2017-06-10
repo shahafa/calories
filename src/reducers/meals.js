@@ -3,8 +3,6 @@ import * as types from '../actions/actionTypes';
 const initialState = {
   isLoading: false,
   meals: [],
-  mealsErrorSnackbarOpen: false,
-  mealsErrorText: '',
   filter: {
     fromDate: null,
     fromTime: null,
@@ -30,8 +28,6 @@ const meals = (state = initialState, action) => {
     case types.GET_MEALS_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,
-        mealsErrorSnackbarOpen: true,
-        mealsErrorText: 'Something went wrong :( please refresh the page',
       });
 
     case types.ADD_MEAL_REQUEST:
@@ -46,10 +42,7 @@ const meals = (state = initialState, action) => {
     case types.ADD_MEAL_FAILURE:
       return Object.assign({}, state, {
         meals: lastMeals.slice(0),
-        mealsErrorSnackbarOpen: true,
-        mealsErrorText: 'Failed to add meal. please try again',
       });
-
 
     case types.DELETE_MEAL_REQUEST:
       return Object.assign({}, state, {
@@ -63,8 +56,6 @@ const meals = (state = initialState, action) => {
     case types.DELETE_MEAL_FAILURE:
       return Object.assign({}, state, {
         meals: lastMeals.slice(0),
-        mealsErrorSnackbarOpen: true,
-        mealsErrorText: 'Failed to delete meal. please try again',
       });
 
     case types.EDIT_MEAL_REQUEST:
@@ -79,15 +70,8 @@ const meals = (state = initialState, action) => {
     case types.EDIT_MEAL_FAILURE:
       return Object.assign({}, state, {
         meals: lastMeals.slice(0),
-        mealsErrorSnackbarOpen: true,
-        mealsErrorText: 'Failed to update meal. please try again',
       });
 
-    case types.CLOSE_MEALS_ERROR_SNACKBAR:
-      return Object.assign({}, state, {
-        mealsErrorSnackbarOpen: false,
-        mealsErrorText: '',
-      });
     case types.SET_FILTER:
       return Object.assign({}, state, { filter: action.filter });
     default:

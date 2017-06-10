@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import Snackbar from 'material-ui/Snackbar';
-import { getMeals, addMeal, deleteMeal, editMeal, closeMealsErrorSnackbar, setFilter } from '../actions/mealsActions';
+import { getMeals, addMeal, deleteMeal, editMeal, setFilter } from '../actions/mealsActions';
 import { getSettings } from '../actions/settingsActions';
 import { mealsGroupByDaySelector } from '../selectors';
 import Main from '../components/Main';
@@ -20,8 +19,6 @@ class Meals extends Component {
     dispatch: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     dailyMealsList: PropTypes.array.isRequired,
-    mealsErrorSnackbarOpen: PropTypes.bool.isRequired,
-    mealsErrorText: PropTypes.string.isRequired,
     filter: PropTypes.object.isRequired,
     numberOfCaloriesPerDay: PropTypes.number,
   }
@@ -94,11 +91,8 @@ class Meals extends Component {
 
   render() {
     const {
-      dispatch,
       isLoading,
       dailyMealsList,
-      mealsErrorSnackbarOpen,
-      mealsErrorText,
       filter,
       numberOfCaloriesPerDay,
     } = this.props;
@@ -162,21 +156,12 @@ class Meals extends Component {
           onDeleteClick={this.handleDeleteMealClick}
           meal={mealToDelete}
         />
-
-        <Snackbar
-          open={mealsErrorSnackbarOpen}
-          message={mealsErrorText}
-          autoHideDuration={4000}
-          onRequestClose={() => dispatch(closeMealsErrorSnackbar())}
-        />
       </Main>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  mealsErrorSnackbarOpen: state.meals.mealsErrorSnackbarOpen,
-  mealsErrorText: state.meals.mealsErrorText,
   dailyMealsList: mealsGroupByDaySelector(state),
   isLoading: state.meals.isLoading,
   filter: state.meals.filter,

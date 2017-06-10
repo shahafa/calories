@@ -37,6 +37,7 @@ const styles = {
 
 class UsersForm extends Component {
   static propTypes = {
+    userId: PropTypes.string.isRequired,
     users: PropTypes.array.isRequired,
     onUpdateButtonClick: PropTypes.func.isRequired,
   }
@@ -62,7 +63,10 @@ class UsersForm extends Component {
 
   render() {
     const { users } = this.state;
-    const { onUpdateButtonClick } = this.props;
+    const {
+      userId,
+      onUpdateButtonClick,
+    } = this.props;
 
     return (
       <div style={styles.root}>
@@ -87,8 +91,10 @@ class UsersForm extends Component {
                       onChange={(event, key, value) => this.handleRoleChange(user.id, value)}
                       underlineFocusStyle={styles.roleSelectField.underlineStyle}
                       underlineStyle={styles.roleSelectField.underlineStyle}
+                      underlineDisabledStyle={styles.roleSelectField.underlineStyle}
                       labelStyle={styles.roleSelectField.labelStyle}
                       menuItemStyle={styles.roleSelectField.menuItemStyle}
+                      disabled={user.id === userId}
                       fullWidth
                     >
                       <MenuItem value={'admin'} primaryText="Admin" />

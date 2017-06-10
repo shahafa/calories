@@ -23,8 +23,6 @@ const meals = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoading: false,
         users: lastUsers,
-        // mealsErrorSnackbarOpen: true,
-        // mealsErrorText: 'Something went wrong :( please refresh the page',
       });
 
     case types.UPDATE_USERS_ROLE_SUCCESS:
@@ -35,8 +33,6 @@ const meals = (state = initialState, action) => {
     case types.UPDATE_USERS_ROLE_FAILURE:
       return Object.assign({}, state, {
         users: lastUsers,
-        // mealsErrorSnackbarOpen: true,
-        // mealsErrorText: 'Something went wrong :( please refresh the page',
       });
     default:
       return state;

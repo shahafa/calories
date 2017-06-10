@@ -30,7 +30,3 @@ export const setSettings = settings => ({
     ],
   },
 });
-
-export const closeSettingsErrorSnackbar = () => ({
-  type: types.CLOSE_SETTINGS_ERROR_SNACKBAR,
-});

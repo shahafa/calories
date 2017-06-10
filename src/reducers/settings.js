@@ -3,8 +3,6 @@ import * as types from '../actions/actionTypes';
 const initialState = {
   isLoading: false,
   settings: {},
-  settingsErrorSnackbarOpen: false,
-  settingsErrorText: '',
 };
 
 let lastSettings = {};
@@ -25,8 +23,6 @@ const settings = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoading: false,
         settings: lastSettings,
-        settingsErrorSnackbarOpen: true,
-        settingsErrorText: 'Something went wrong :( please refresh the page',
       });
 
     case types.SET_SETTINGS_REQUEST:
@@ -41,16 +37,7 @@ const settings = (state = initialState, action) => {
     case types.SET_SETTINGS_FAILURE:
       return Object.assign({}, state, {
         settings: lastSettings,
-        settingsErrorSnackbarOpen: true,
-        settingsErrorText: 'Something went wrong :( please try to update settings again',
       });
-
-    case types.CLOSE_SETTINGS_ERROR_SNACKBAR: {
-      return Object.assign({}, state, {
-        settingsErrorSnackbarOpen: false,
-        settingsErrorText: '',
-      });
-    }
     default:
       return state;
   }

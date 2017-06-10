@@ -9,6 +9,7 @@ import Loading from '../components/Loading';
 class Users extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    userId: PropTypes.string.isRequired,
     users: PropTypes.array.isRequired,
     isLoading: PropTypes.bool.isRequired,
   }
@@ -25,6 +26,7 @@ class Users extends Component {
 
   render() {
     const {
+      userId,
       users,
       isLoading,
     } = this.props;
@@ -36,6 +38,7 @@ class Users extends Component {
     return (
       <Main>
         <UsersFrom
+          userId={userId}
           users={users}
           onUpdateButtonClick={this.onUpdateButtonClick}
         />
@@ -45,6 +48,7 @@ class Users extends Component {
 }
 
 const mapStateToProps = state => ({
+  userId: state.auth.user.id,
   users: state.users.users,
   isLoading: state.settings.isLoading,
 });

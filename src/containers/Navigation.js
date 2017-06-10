@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import NavigationMenu from '../components/NavigationMenu';
 
 const Navigation = ({
+  userRole,
   history,
   location,
 }) => (
   <NavigationMenu
+    userRole={userRole}
     mealsActive={location.pathname === '/meals'}
     usersActive={location.pathname === '/users'}
     settingsActive={location.pathname === '/settings'}
@@ -31,9 +33,14 @@ const Navigation = ({
   />
 );
 
+const mapStateToProps = state => ({
+  userRole: state.auth.user.role,
+});
+
 Navigation.propTypes = {
+  userRole: PropTypes.string.isRequired,
   history: PropTypes.object,
   location: PropTypes.object,
 };
 
-export default withRouter(connect()(Navigation));
+export default withRouter(connect(mapStateToProps)(Navigation));
