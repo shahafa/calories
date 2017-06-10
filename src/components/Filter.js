@@ -89,12 +89,12 @@ class Filter extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { filter } = nextProps;
-    this.state = {
+    this.setState({
       fromDate: filter.fromDate === null ? null : new Date(filter.fromDate),
       fromTime: filter.fromTime === null ? null : new Date(filter.fromTime),
       toDate: filter.toDate === null ? null : new Date(filter.toDate),
       toTime: filter.toTime === null ? null : new Date(filter.toTime),
-    };
+    });
   }
 
   handleFromDateChange = (event, date) => {
@@ -206,7 +206,7 @@ class Filter extends Component {
             labelStyle={styles.buttons.labelStyle}
             label="Clear Filter"
             disabled={!fromDate && !fromTime && !toDate && !toTime}
-            onClick={() => onFilterUpdate({
+            onTouchTap={() => onFilterUpdate({
               fromDate: null,
               fromTime: null,
               toDate: null,

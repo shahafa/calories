@@ -171,7 +171,7 @@ class LoginForm extends Component {
           disabled={isAuthenticating}
         >
           {isAuthenticating ?
-            <CircularProgress color="white" size={25} />
+            <CircularProgress color="white" size={25} style={{ marginTop: '5px' }} />
           :
             <div style={styles.loginButton.text}>Login</div>
           }

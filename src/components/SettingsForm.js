@@ -114,7 +114,7 @@ class SettingsForm extends Component {
             />
 
             <FlatButton
-              onClick={this.handleUpdateClick}
+              onTouchTap={this.handleUpdateClick}
               style={styles.button}
               label="Update"
               primary

@@ -31,10 +31,6 @@ PrivateRoute.propTypes = {
   ]).isRequired,
 };
 
-PrivateRoute.defaultProps = {
-  token: null,
-};
-
 const mapStateToProps = state => ({
   token: state.auth.jwtToken,
   isAuthenticated: state.auth.isAuthenticated,

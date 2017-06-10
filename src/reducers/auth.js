@@ -6,7 +6,7 @@ const initialState = {
   isAuthenticated: false,
   isSigningUp: false,
   jwtToken: null,
-  user: null,
+  user: {},
   errorCode: null,
   errorText: '',
 };
