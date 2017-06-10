@@ -35,7 +35,9 @@ const auth = (state = initialState, action) => {
         isAuthenticating: false,
         isAuthenticated: false,
         jwtToken: null,
-        user: null,
+        user: {
+          role: '',
+        },
       });
     case types.SIGNUP_REQUEST:
       return Object.assign({}, state, {
@@ -55,7 +57,9 @@ const auth = (state = initialState, action) => {
         isSigningUp: false,
         isAuthenticated: false,
         jwtToken: null,
-        user: null,
+        user: {
+          role: '',
+        },
       });
     default:
       return state;

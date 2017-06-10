@@ -22,7 +22,7 @@ const settings = (state = initialState, action) => {
     case types.GET_SETTINGS_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,
-        settings: lastSettings,
+        settings: lastSettings.slice(0),
       });
 
     case types.SET_SETTINGS_REQUEST:
@@ -36,7 +36,7 @@ const settings = (state = initialState, action) => {
       });
     case types.SET_SETTINGS_FAILURE:
       return Object.assign({}, state, {
-        settings: lastSettings,
+        settings: lastSettings.slice(0),
       });
     default:
       return state;

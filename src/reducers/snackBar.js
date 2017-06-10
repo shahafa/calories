@@ -62,6 +62,11 @@ const snackBar = (state = initialState, action) => {
         isOpen: true,
         message: 'Failed to update users. please try again',
       });
+    case types.DELETE_USER_FAILURE:
+      return Object.assign({}, state, {
+        isOpen: true,
+        message: 'Failed to delete user. please try again',
+      });
     default:
       return state;
   }

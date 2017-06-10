@@ -27,3 +27,21 @@ export const updateUsersRole = users => ({
     ],
   },
 });
+
+export const deleteUser = userId => ({
+  [RSAA]: {
+    endpoint: `/users/${userId}`,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${store.getState().auth.jwtToken}`,
+    },
+    types: [
+      {
+        type: types.DELETE_USER_REQUEST,
+        meta: { userId },
+      },
+      types.DELETE_USER_SUCCESS,
+      types.DELETE_USER_FAILURE,
+    ],
+  },
+});

@@ -28,8 +28,6 @@ class Meals extends Component {
     deleteMealDialogOpen: false,
     mealToDelete: null,
     mealToEdit: null,
-    mealsActionError: false,
-    mealsActionErrorText: '',
   }
 
   componentDidMount() {

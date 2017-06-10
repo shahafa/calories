@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getUsers, updateUsersRole } from '../actions/usersActions';
+import { getUsers, updateUsersRole, deleteUser } from '../actions/usersActions';
 import Main from '../components/Main';
 import UsersFrom from '../components/UsersForm';
+import DeleteUserDialog from '../components/DeleteUserDialog';
 import Loading from '../components/Loading';
 
 class Users extends Component {
@@ -14,14 +15,27 @@ class Users extends Component {
     isLoading: PropTypes.bool.isRequired,
   }
 
+  state = {
+    deleteUserDialogOpen: false,
+    userToDelete: null,
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getUsers());
   }
 
-  onUpdateButtonClick = (users) => {
+  handleUpdateButtonClick = (users) => {
     const { dispatch } = this.props;
     dispatch(updateUsersRole(users));
+  }
+
+  handleDeleteUserClick = () => {
+    const { dispatch } = this.props;
+    const { userToDelete } = this.state;
+
+    dispatch(deleteUser(userToDelete.id));
+    this.setState({ deleteUserDialogOpen: false });
   }
 
   render() {
@@ -30,6 +44,11 @@ class Users extends Component {
       users,
       isLoading,
     } = this.props;
+
+    const {
+      deleteUserDialogOpen,
+      userToDelete,
+    } = this.state;
 
     if (isLoading) {
       return (<Loading />);
@@ -40,7 +59,18 @@ class Users extends Component {
         <UsersFrom
           userId={userId}
           users={users}
-          onUpdateButtonClick={this.onUpdateButtonClick}
+          onDeleteUserClick={user => this.setState({
+            userToDelete: user,
+            deleteUserDialogOpen: true,
+          })}
+          onUpdateButtonClick={this.handleUpdateButtonClick}
+        />
+
+        <DeleteUserDialog
+          isOpen={deleteUserDialogOpen}
+          onCancelClick={() => this.setState({ deleteUserDialogOpen: false })}
+          onDeleteClick={this.handleDeleteUserClick}
+          user={userToDelete}
         />
       </Main>
     );

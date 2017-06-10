@@ -22,7 +22,6 @@ const meals = (state = initialState, action) => {
     case types.GET_USERS_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,
-        users: lastUsers,
       });
 
     case types.UPDATE_USERS_ROLE_SUCCESS:
@@ -32,8 +31,23 @@ const meals = (state = initialState, action) => {
       });
     case types.UPDATE_USERS_ROLE_FAILURE:
       return Object.assign({}, state, {
-        users: lastUsers,
+        users: lastUsers.slice(0),
       });
+
+    case types.DELETE_USER_REQUEST:
+      return Object.assign({}, state, {
+        users: state.users.filter(user => user.id !== action.meta.userId),
+      });
+    case types.DELETE_USER_SUCCESS:
+      lastUsers = action.payload.data.users;
+      return Object.assign({}, state, {
+        users: action.payload.data.users,
+      });
+    case types.DELETE_USER_FAILURE:
+      return Object.assign({}, state, {
+        users: lastUsers.slice(0),
+      });
+
     default:
       return state;
   }
