@@ -43,6 +43,7 @@ const headerStyle = (meal, numberOfCaloriesPerDay) => ({
 });
 
 const DailyMealsCard = ({
+  isAdmin,
   dailyMeals,
   onEditMealClick,
   onDeleteMealClick,
@@ -73,7 +74,10 @@ const DailyMealsCard = ({
           adjustForCheckbox={false}
         >
           <TableRow selectable={false}>
-            <TableHeaderColumn>Time</TableHeaderColumn>
+            <TableHeaderColumn style={{ width: '40px' }}>Time</TableHeaderColumn>
+            {isAdmin &&
+              <TableHeaderColumn>User</TableHeaderColumn>
+            }
             <TableHeaderColumn>Meal</TableHeaderColumn>
             <TableHeaderColumn>Calories</TableHeaderColumn>
             <TableHeaderColumn style={{ width: '37px' }} />
@@ -86,7 +90,10 @@ const DailyMealsCard = ({
               key={meal.id}
               selectable={false}
             >
-              <TableRowColumn>{moment(meal.date).format('HH:mm')}</TableRowColumn>
+              <TableRowColumn style={{ width: '40px' }}>{moment(meal.date).format('HH:mm')}</TableRowColumn>
+              {isAdmin &&
+                <TableRowColumn>{meal.userEmail}</TableRowColumn>
+              }
               <TableRowColumn>{meal.meal}</TableRowColumn>
               <TableRowColumn>{meal.calories}</TableRowColumn>
               <TableRowColumn style={{ width: '37px' }}>
@@ -110,6 +117,7 @@ const DailyMealsCard = ({
 );
 
 DailyMealsCard.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
   dailyMeals: PropTypes.object.isRequired,
   onEditMealClick: PropTypes.func.isRequired,
   onDeleteMealClick: PropTypes.func.isRequired,

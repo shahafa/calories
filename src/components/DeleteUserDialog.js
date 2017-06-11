@@ -10,7 +10,7 @@ const DeleteUserDialog = ({
   user,
 }) => (
   <Dialog
-    contentStyle={{ width: '400px' }}
+    contentStyle={{ width: '500px' }}
     actions={[
       <FlatButton
         label="Cancel"
@@ -25,7 +25,7 @@ const DeleteUserDialog = ({
     ]}
     open={isOpen}
   >
-    {`Delete user '${user ? user.email : ''}'?`}
+    {`Are you sure you want to delete user '${user ? user.email : ''}'?`}
   </Dialog>);
 
 DeleteUserDialog.propTypes = {

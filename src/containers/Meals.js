@@ -17,6 +17,8 @@ import Loading from '../components/Loading';
 class Meals extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    isAdmin: PropTypes.bool.isRequired,
+    userEmail: PropTypes.string.isRequired,
     isLoading: PropTypes.bool.isRequired,
     dailyMealsList: PropTypes.array.isRequired,
     filter: PropTypes.object.isRequired,
@@ -37,7 +39,7 @@ class Meals extends Component {
   }
 
   handleAddMealClick = (id, date, time, meal, calories) => {
-    const { dispatch } = this.props;
+    const { dispatch, userEmail } = this.props;
 
     this.setState({ addMealDialogOpen: false });
 
@@ -52,6 +54,7 @@ class Meals extends Component {
       }).utc().format(),
       meal,
       calories,
+      userEmail,
     }));
   }
 
@@ -89,6 +92,7 @@ class Meals extends Component {
 
   render() {
     const {
+      isAdmin,
       isLoading,
       dailyMealsList,
       filter,
@@ -119,6 +123,7 @@ class Meals extends Component {
           dailyMealsList.map(dailyMeals => (
             <DailyMealsCard
               key={dailyMeals.date}
+              isAdmin={isAdmin}
               dailyMeals={dailyMeals}
               onDeleteMealClick={meal => this.setState({
                 mealToDelete: meal,
@@ -161,6 +166,8 @@ class Meals extends Component {
 
 const mapStateToProps = state => ({
   dailyMealsList: mealsGroupByDaySelector(state),
+  isAdmin: state.auth.user.role === 'admin',
+  userEmail: state.auth.user.email,
   isLoading: state.meals.isLoading,
   filter: state.meals.filter,
   numberOfCaloriesPerDay: state.settings.settings

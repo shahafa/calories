@@ -2,7 +2,7 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
   isLoading: false,
-  settings: {},
+  settings: null,
 };
 
 let lastSettings = {};
@@ -22,7 +22,7 @@ const settings = (state = initialState, action) => {
     case types.GET_SETTINGS_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,
-        settings: lastSettings.slice(0),
+        settings: Object.assign({}, lastSettings),
       });
 
     case types.SET_SETTINGS_REQUEST:
@@ -36,7 +36,7 @@ const settings = (state = initialState, action) => {
       });
     case types.SET_SETTINGS_FAILURE:
       return Object.assign({}, state, {
-        settings: lastSettings.slice(0),
+        settings: Object.assign({}, lastSettings),
       });
     default:
       return state;

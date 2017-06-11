@@ -96,7 +96,7 @@ class UsersForm extends Component {
               displaySelectAll={false}
             >
               <TableRow>
-                <TableHeaderColumn>Email Address</TableHeaderColumn>
+                <TableHeaderColumn>User</TableHeaderColumn>
                 <TableHeaderColumn>Role</TableHeaderColumn>
                 <TableHeaderColumn style={{ width: '18px' }} />
               </TableRow>
