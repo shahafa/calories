@@ -38,8 +38,8 @@ class Meals extends Component {
     dispatch(getSettings());
   }
 
-  handleAddMealClick = (id, date, time, meal, calories) => {
-    const { dispatch, userEmail } = this.props;
+  handleAddMealClick = (id, date, time, userEmail, meal, calories) => {
+    const { dispatch } = this.props;
 
     this.setState({ addMealDialogOpen: false });
 
@@ -52,13 +52,13 @@ class Meals extends Component {
         hours: time.getHours(),
         minutes: time.getMinutes(),
       }).utc().format(),
+      userEmail,
       meal,
       calories,
-      userEmail,
     }));
   }
 
-  handleEditMealClick = (id, date, time, meal, calories) => {
+  handleEditMealClick = (id, date, time, userEmail, meal, calories) => {
     const { dispatch } = this.props;
 
     this.setState({ addMealDialogOpen: false });
@@ -72,6 +72,7 @@ class Meals extends Component {
         hours: time.getHours(),
         minutes: time.getMinutes(),
       }).utc().format(),
+      userEmail,
       meal,
       calories,
     }));
@@ -97,6 +98,7 @@ class Meals extends Component {
       dailyMealsList,
       filter,
       numberOfCaloriesPerDay,
+      userEmail,
     } = this.props;
 
     const {
@@ -151,6 +153,7 @@ class Meals extends Component {
           onAddMealClick={this.handleAddMealClick}
           onEditMealClick={this.handleEditMealClick}
           meal={mealToEdit}
+          userEmail={userEmail}
         />
 
         <DeleteMealDialog

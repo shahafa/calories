@@ -15,6 +15,7 @@ class AddMealDialog extends Component {
     onEditMealClick: PropTypes.func.isRequired,
     onCancelClick: PropTypes.func.isRequired,
     meal: PropTypes.object,
+    userEmail: PropTypes.string.isRequired,
   }
 
   state = {
@@ -22,6 +23,7 @@ class AddMealDialog extends Component {
     editMode: false,
     date: new Date(),
     time: new Date(),
+    user: '',
     meal: '',
     mealErrorText: '',
     calories: '',
@@ -35,6 +37,7 @@ class AddMealDialog extends Component {
         id: nextProps.meal.id,
         date: new Date(nextProps.meal.date),
         time: new Date(nextProps.meal.date),
+        userEmail: nextProps.meal.userEmail,
         meal: nextProps.meal.meal,
         calories: nextProps.meal.calories,
         mealErrorText: '',
@@ -46,6 +49,7 @@ class AddMealDialog extends Component {
         id: uuid(),
         date: new Date(),
         time: new Date(),
+        userEmail: nextProps.userEmail,
         meal: '',
         mealErrorText: '',
         calories: '',
@@ -98,12 +102,13 @@ class AddMealDialog extends Component {
       id,
       date,
       time,
+      userEmail,
       meal,
       calories,
     } = this.state;
 
     if (this.validateMeal() && this.validateCalories()) {
-      onAddMealClick(id, date, time, meal, calories);
+      onAddMealClick(id, date, time, userEmail, meal, calories);
     }
   }
 
@@ -113,12 +118,13 @@ class AddMealDialog extends Component {
       id,
       date,
       time,
+      userEmail,
       meal,
       calories,
     } = this.state;
 
     if (this.validateMeal() && this.validateCalories()) {
-      onEditMealClick(id, date, time, meal, calories);
+      onEditMealClick(id, date, time, userEmail, meal, calories);
     }
   }
 
