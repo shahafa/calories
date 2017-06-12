@@ -97,6 +97,9 @@ class SignupForm extends Component {
     if (validator.isEmpty(password)) {
       this.setState({ passwordErrorText: 'Password cannot be blank' });
       return false;
+    } else if (!validator.isLength(password, { min: 8 })) {
+      this.setState({ passwordErrorText: 'Password must be at least 8 characters long' });
+      return false;
     }
 
     this.setState({ passwordErrorText: '' });
