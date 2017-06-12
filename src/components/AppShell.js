@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { cyanA700, cyanA400 } from 'material-ui/styles/colors';
-import Navigation from '../containers/Navigation';
+import NavigationPanel from '../containers/NavigationPanel';
 
 const styles = {
   root: {
@@ -48,7 +48,7 @@ const AppShell = ({
     </div>
 
     <div style={styles.container}>
-      <Navigation />
+      <NavigationPanel />
 
       {children}
     </div>

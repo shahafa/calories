@@ -1,6 +1,6 @@
 import { RSAA } from 'redux-api-middleware';
 import store from '../store';
-import * as types from './actionTypes';
+import * as types from '../constants/actionTypes';
 
 export const getSettings = () => ({
   [RSAA]: {

@@ -1,7 +1,7 @@
 import { RSAA } from 'redux-api-middleware';
 import utf8 from 'utf8';
 import base64 from 'base-64';
-import * as types from './actionTypes';
+import * as types from '../constants/actionTypes';
 
 export const resetAuthStore = () => ({
   type: types.RESET_AUTH_STORE,

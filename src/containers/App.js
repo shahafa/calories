@@ -5,14 +5,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Snackbar from 'material-ui/Snackbar';
 import { closeSnackbar } from '../actions/snackbarActions';
-import DevTools from './DevTools';
 import PrivateRoute from './PrivateRoute';
+import DevTools from '../components/DevTools';
 import AppShell from '../components/AppShell';
-import Login from './Login';
-import Signup from './Signup';
-import Meals from './Meals';
-import Users from './Users';
-import Settings from './Settings';
+import LoginPage from './LoginPage';
+import SignupPage from './SignupPage';
+import MealsPage from './MealsPage';
+import UsersPage from './UsersPage';
+import SettingsPage from './SettingsPage';
 
 const App = ({
   dispatch,
@@ -26,17 +26,17 @@ const App = ({
         {process.env.NODE_ENV === 'development' && <DevTools />}
 
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Route exact path="/" component={LoginPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={SignupPage} />
 
           <AppShell history={Router.history}>
             <Switch>
-              <PrivateRoute path="/meals" component={Meals} />
-              <PrivateRoute path="/settings" component={Settings} />
+              <PrivateRoute path="/meals" component={MealsPage} />
+              <PrivateRoute path="/settings" component={SettingsPage} />
 
               {(userRole === 'admin' || userRole === 'userManager') &&
-                <PrivateRoute path="/users" component={Users} />
+                <PrivateRoute path="/users" component={UsersPage} />
               }
 
               <Redirect from="*" to="/meals" />

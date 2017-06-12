@@ -1,1 +1,1 @@
-export { isTokenExpired } from './jwt.js';
+export { isTokenExpired } from './jwtHelper.js';

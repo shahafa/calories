@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import * as types from '../actions/actionTypes';
+import * as types from '../constants/actionTypes';
 
 const initialState = {
   isAuthenticating: false,

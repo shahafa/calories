@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { resetAuthStore, signup } from '../actions/authActions';
+import { resetAuthStore, login } from '../actions/authActions';
 import HomeShell from '../components/HomeShell';
-import SignupForm from '../components/SignupForm';
+import LoginForm from '../components/LoginForm';
 
-class Signup extends Component {
+class LoginPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    isSigningUp: PropTypes.bool.isRequired,
+    isAuthenticating: PropTypes.bool.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     errorText: PropTypes.string.isRequired,
   }
@@ -20,15 +20,15 @@ class Signup extends Component {
     dispatch(resetAuthStore());
   }
 
-  handleSignupButtonClick = (email, password) => {
+  handleLoginButtonClick = (email, password) => {
     const { dispatch } = this.props;
-    dispatch(signup(email, password));
+    dispatch(login(email, password));
   }
 
   render() {
     const {
       history,
-      isSigningUp,
+      isAuthenticating,
       isAuthenticated,
       errorText,
     } = this.props;
@@ -39,11 +39,11 @@ class Signup extends Component {
 
     return (
       <HomeShell>
-        <SignupForm
-          isSigningUp={isSigningUp}
+        <LoginForm
+          isAuthenticating={isAuthenticating}
           errorText={errorText}
-          onSignupButtonClick={this.handleSignupButtonClick}
-          onLoginClick={() => history.push('/login')}
+          onLoginButtonClick={this.handleLoginButtonClick}
+          onGetStartedClick={() => history.push('/signup')}
         />
       </HomeShell>
     );
@@ -51,9 +51,9 @@ class Signup extends Component {
 }
 
 const mapStateToProps = state => ({
+  isAuthenticating: state.auth.isAuthenticating,
   isAuthenticated: state.auth.isAuthenticated,
-  isSigningUp: state.auth.isSigningUp,
   errorText: state.auth.errorText,
 });
 
-export default connect(mapStateToProps)(Signup);
+export default connect(mapStateToProps)(LoginPage);

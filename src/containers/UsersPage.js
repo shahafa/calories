@@ -7,7 +7,7 @@ import UsersFrom from '../components/UsersForm';
 import DeleteUserDialog from '../components/DeleteUserDialog';
 import Loading from '../components/Loading';
 
-class Users extends Component {
+class UsersPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
@@ -85,4 +85,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-)(Users);
+)(UsersPage);

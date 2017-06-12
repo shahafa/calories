@@ -14,7 +14,7 @@ import DeleteMealDialog from '../components/DeleteMealDialog';
 import NoMeals from '../components/NoMeals';
 import Loading from '../components/Loading';
 
-class Meals extends Component {
+class MealsPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     isAdmin: PropTypes.bool.isRequired,
@@ -180,4 +180,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-)(Meals);
+)(MealsPage);

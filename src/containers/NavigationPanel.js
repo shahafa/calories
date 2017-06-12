@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavigationMenu from '../components/NavigationMenu';
 
-const Navigation = ({
+const NavigationPanel = ({
   userRole,
   history,
   location,
@@ -37,10 +37,10 @@ const mapStateToProps = state => ({
   userRole: state.auth.user.role,
 });
 
-Navigation.propTypes = {
+NavigationPanel.propTypes = {
   userRole: PropTypes.string.isRequired,
   history: PropTypes.object,
   location: PropTypes.object,
 };
 
-export default withRouter(connect(mapStateToProps)(Navigation));
+export default withRouter(connect(mapStateToProps)(NavigationPanel));

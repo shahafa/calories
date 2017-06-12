@@ -6,7 +6,7 @@ import Main from '../components/Main';
 import SettingsFrom from '../components/SettingsForm';
 import Loading from '../components/Loading';
 
-class Settings extends Component {
+class SettingsPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     settings: PropTypes.object,
@@ -51,4 +51,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-)(Settings);
+)(SettingsPage);

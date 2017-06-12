@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { resetAuthStore, login } from '../actions/authActions';
+import { resetAuthStore, signup } from '../actions/authActions';
 import HomeShell from '../components/HomeShell';
-import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
 
-class Login extends Component {
+class SignupPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    isAuthenticating: PropTypes.bool.isRequired,
+    isSigningUp: PropTypes.bool.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     errorText: PropTypes.string.isRequired,
   }
@@ -20,15 +20,15 @@ class Login extends Component {
     dispatch(resetAuthStore());
   }
 
-  handleLoginButtonClick = (email, password) => {
+  handleSignupButtonClick = (email, password) => {
     const { dispatch } = this.props;
-    dispatch(login(email, password));
+    dispatch(signup(email, password));
   }
 
   render() {
     const {
       history,
-      isAuthenticating,
+      isSigningUp,
       isAuthenticated,
       errorText,
     } = this.props;
@@ -39,11 +39,11 @@ class Login extends Component {
 
     return (
       <HomeShell>
-        <LoginForm
-          isAuthenticating={isAuthenticating}
+        <SignupForm
+          isSigningUp={isSigningUp}
           errorText={errorText}
-          onLoginButtonClick={this.handleLoginButtonClick}
-          onGetStartedClick={() => history.push('/signup')}
+          onSignupButtonClick={this.handleSignupButtonClick}
+          onLoginClick={() => history.push('/login')}
         />
       </HomeShell>
     );
@@ -51,9 +51,9 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticating: state.auth.isAuthenticating,
   isAuthenticated: state.auth.isAuthenticated,
+  isSigningUp: state.auth.isSigningUp,
   errorText: state.auth.errorText,
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(SignupPage);
