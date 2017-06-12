@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { resetAuthStore, login } from '../actions/authActions';
+import { resetAuthState, login } from '../actions/authActions';
 import HomeShell from '../components/HomeShell';
 import LoginForm from '../components/LoginForm';
 
@@ -17,7 +17,7 @@ class LoginPage extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(resetAuthStore());
+    dispatch(resetAuthState());
   }
 
   handleLoginButtonClick = (email, password) => {

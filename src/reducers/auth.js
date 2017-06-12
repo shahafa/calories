@@ -15,7 +15,7 @@ const initialState = {
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
-    case types.RESET_AUTH_STORE:
+    case types.RESET_AUTH_STATE:
       return Object.assign({}, initialState);
     case types.LOGIN_REQUEST:
       return Object.assign({}, state, {
