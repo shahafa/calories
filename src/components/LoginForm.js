@@ -113,6 +113,8 @@ class LoginForm extends Component {
     if (this.validateEmail() && this.validatePassword()) {
       onLoginButtonClick(email, password);
     }
+
+    this.setState({ email: '', password: '' });
   }
 
   render() {

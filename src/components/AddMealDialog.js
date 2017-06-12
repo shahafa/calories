@@ -18,16 +18,19 @@ class AddMealDialog extends Component {
     userEmail: PropTypes.string.isRequired,
   }
 
-  state = {
-    id: uuid(),
-    editMode: false,
-    date: new Date(),
-    time: new Date(),
-    user: '',
-    meal: '',
-    mealErrorText: '',
-    calories: '',
-    caloriesErrorText: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      editMode: false,
+      id: uuid(),
+      date: new Date(),
+      time: new Date(),
+      userEmail: props.userEmail,
+      meal: '',
+      mealErrorText: '',
+      calories: '',
+      caloriesErrorText: '',
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -97,7 +100,11 @@ class AddMealDialog extends Component {
   }
 
   handleAddMealClick = () => {
-    const { onAddMealClick } = this.props;
+    const {
+      onAddMealClick,
+      onEditMealClick,
+    } = this.props;
+
     const {
       id,
       date,
@@ -105,26 +112,15 @@ class AddMealDialog extends Component {
       userEmail,
       meal,
       calories,
+      editMode,
     } = this.state;
 
     if (this.validateMeal() && this.validateCalories()) {
-      onAddMealClick(id, date, time, userEmail, meal, calories);
-    }
-  }
-
-  handleEditMealClick = () => {
-    const { onEditMealClick } = this.props;
-    const {
-      id,
-      date,
-      time,
-      userEmail,
-      meal,
-      calories,
-    } = this.state;
-
-    if (this.validateMeal() && this.validateCalories()) {
-      onEditMealClick(id, date, time, userEmail, meal, calories);
+      if (editMode) {
+        onEditMealClick(id, date, time, userEmail, meal, parseInt(calories, 10));
+      } else {
+        onAddMealClick(id, date, time, userEmail, meal, parseInt(calories, 10));
+      }
     }
   }
 
@@ -159,7 +155,7 @@ class AddMealDialog extends Component {
           <FlatButton
             label={editMode ? 'Update' : 'Add'}
             primary
-            onTouchTap={editMode ? this.handleEditMealClick : this.handleAddMealClick}
+            onTouchTap={this.handleAddMealClick}
           />,
         ]}
         modal
