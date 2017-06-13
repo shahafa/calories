@@ -25,7 +25,7 @@ const styles = {
     underlineStyle: { borderColor: '#FFFFFF' },
     labelStyle: {
       fontSize: '13px',
-      height: '32px',
+      height: '36px',
     },
     menuItemStyle: { fontSize: '13px' },
   },
