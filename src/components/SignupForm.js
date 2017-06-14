@@ -68,6 +68,8 @@ class SignupForm extends Component {
     emailErrorText: '',
     password: '',
     passwordErrorText: '',
+    confirmPassword: '',
+    confirmPasswordErrorText: '',
   }
 
   handleEmailChange = (event) => {
@@ -76,6 +78,10 @@ class SignupForm extends Component {
 
   handlePasswordChange = (event) => {
     this.setState({ password: event.target.value });
+  };
+
+  handleConfirmPasswordChange = (event) => {
+    this.setState({ confirmPassword: event.target.value });
   };
 
   validateEmail = () => {
@@ -106,6 +112,19 @@ class SignupForm extends Component {
     return true;
   }
 
+  validateConfirmPassword = () => {
+    const { password, confirmPassword } = this.state;
+    if (validator.isEmpty(password)) {
+      this.setState({ passwordErrorText: 'Password confirmation cannot be blank' });
+      return false;
+    } else if (password !== confirmPassword) {
+      this.setState({ confirmPasswordErrorText: 'Password confirmation doesn\'t match' });
+      return false;
+    }
+    this.setState({ confirmPasswordErrorText: '' });
+    return true;
+  }
+
   handleSignupButtonClick = () => {
     const { onSignupButtonClick } = this.props;
 
@@ -114,11 +133,10 @@ class SignupForm extends Component {
       password,
     } = this.state;
 
-    if (this.validateEmail() && this.validatePassword()) {
+    if (this.validateEmail() && this.validatePassword() && this.validateConfirmPassword()) {
       onSignupButtonClick(email, password);
+      this.setState({ email: '', password: '' });
     }
-
-    this.setState({ email: '', password: '' });
   }
 
   render() {
@@ -127,6 +145,8 @@ class SignupForm extends Component {
       emailErrorText,
       password,
       passwordErrorText,
+      confirmPassword,
+      confirmPasswordErrorText,
     } = this.state;
 
     const {
@@ -161,6 +181,21 @@ class SignupForm extends Component {
           floatingLabelText="Password"
           errorText={passwordErrorText}
           onBlur={this.validatePassword}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              this.handleSignupButtonClick();
+            }
+          }}
+        />
+
+        <TextField
+          type="password"
+          value={confirmPassword}
+          fullWidth
+          onChange={this.handleConfirmPasswordChange}
+          floatingLabelText="Confirm Password"
+          errorText={confirmPasswordErrorText}
+          onBlur={this.validateConfirmPassword}
           onKeyPress={(e) => {
             if (e.key === 'Enter') {
               this.handleSignupButtonClick();

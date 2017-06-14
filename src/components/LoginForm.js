@@ -43,7 +43,7 @@ const styles = {
   },
 
   getStarted: {
-    marginTop: '15px',
+    marginTop: '35px',
     fontSize: '12px',
     fontWeight: '300',
     color: grey600,
@@ -112,9 +112,8 @@ class LoginForm extends Component {
 
     if (this.validateEmail() && this.validatePassword()) {
       onLoginButtonClick(email, password);
+      this.setState({ email: '', password: '' });
     }
-
-    this.setState({ email: '', password: '' });
   }
 
   render() {

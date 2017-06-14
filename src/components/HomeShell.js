@@ -25,7 +25,7 @@ const styles = {
   },
 
   card: {
-    height: '365px',
+    height: '425px',
     width: '250px',
     padding: '35px',
     background: 'white',
