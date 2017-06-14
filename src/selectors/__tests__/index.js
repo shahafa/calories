@@ -15,6 +15,11 @@ describe('mealsGroupByDaySelector', () => {
             toTime: null,
           },
         },
+        auth: {
+          user: {
+            email: 'admin@mail.com',
+          },
+        },
       }),
     ).toMatchSnapshot();
   });
@@ -122,6 +127,11 @@ describe('mealsGroupByDaySelector', () => {
             toTime: null,
           },
         },
+        auth: {
+          user: {
+            email: 'admin@mail.com',
+          },
+        },
       }),
     ).toMatchSnapshot();
   });
@@ -227,6 +237,11 @@ describe('mealsGroupByDaySelector', () => {
             fromTime: '2017-06-14T03:00:57.055Z',
             toDate: '2017-06-11T21:00:00.000Z',
             toTime: '2017-06-14T18:00:11.646Z',
+          },
+        },
+        auth: {
+          user: {
+            email: 'admin@mail.com',
           },
         },
       }),

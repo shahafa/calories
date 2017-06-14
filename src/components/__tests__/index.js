@@ -48,7 +48,7 @@ test('DailyMealsCard should render', () => {
   const tree = renderer.create(
     <MuiThemeProvider>
       <DailyMealsCard
-        isAdmin={false}
+        showUserColumn={false}
         dailyMeals={{
           date: moment('2017-06-13T21:00:00.000Z'),
           meals: [{

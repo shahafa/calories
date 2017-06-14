@@ -5,8 +5,8 @@ import moment from 'moment';
 import { groupBy } from 'lodash';
 
 export const mealsGroupByDaySelector = createSelector(
-  [state => state.meals.meals, state => state.meals.filter],
-  (meals, filter) => {
+  [state => state.meals.meals, state => state.meals.filter, state => state.auth.user.email],
+  (meals, filter, email) => {
     const fromDateFilter = filter.fromDate === null ? false : moment(filter.fromDate).startOf('day');
     const toDateFilter = filter.toDate === null ? false : moment(filter.toDate).endOf('day');
     const fromTimeFilter = filter.fromTime === null ? false : moment({ hour: moment(filter.fromTime).hour(), minute: moment(filter.fromTime).minute() });
@@ -22,6 +22,7 @@ export const mealsGroupByDaySelector = createSelector(
       .map(date => ({
         date: moment(date),
         meals: groupByObject[date]
+                .filter(meal => filter.showAll || email === meal.userEmail)
                 .filter(meal => !fromTimeFilter || moment({ hour: moment(meal.date).hour(), minute: moment(meal.date).minute() }).isSameOrAfter(fromTimeFilter))
                 .filter(meal => !toTimeFilter || moment({ hour: moment(meal.date).hour(), minute: moment(meal.date).minute() }).isSameOrBefore(toTimeFilter))
                 .sort((left, right) => moment.utc(right.date).diff(moment.utc(left.date))),

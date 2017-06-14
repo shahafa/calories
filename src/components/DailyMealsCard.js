@@ -43,7 +43,7 @@ const headerStyle = (meal, numberOfCaloriesPerDay) => ({
 });
 
 const DailyMealsCard = ({
-  isAdmin,
+  showUserColumn,
   dailyMeals,
   onEditMealClick,
   onDeleteMealClick,
@@ -75,7 +75,7 @@ const DailyMealsCard = ({
         >
           <TableRow selectable={false}>
             <TableHeaderColumn style={{ width: '40px' }}>Time</TableHeaderColumn>
-            {isAdmin &&
+            {showUserColumn &&
               <TableHeaderColumn>User</TableHeaderColumn>
             }
             <TableHeaderColumn>Meal</TableHeaderColumn>
@@ -91,7 +91,7 @@ const DailyMealsCard = ({
               selectable={false}
             >
               <TableRowColumn style={{ width: '40px' }}>{moment(meal.date).format('HH:mm')}</TableRowColumn>
-              {isAdmin &&
+              {showUserColumn &&
                 <TableRowColumn>{meal.userEmail}</TableRowColumn>
               }
               <TableRowColumn>{meal.meal}</TableRowColumn>
@@ -117,7 +117,7 @@ const DailyMealsCard = ({
 );
 
 DailyMealsCard.propTypes = {
-  isAdmin: PropTypes.bool.isRequired,
+  showUserColumn: PropTypes.bool.isRequired,
   dailyMeals: PropTypes.object.isRequired,
   onEditMealClick: PropTypes.func.isRequired,
   onDeleteMealClick: PropTypes.func.isRequired,

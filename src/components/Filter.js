@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 import FlatButton from 'material-ui/FlatButton';
-import { grey600 } from 'material-ui/styles/colors';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import { grey600, grey200 } from 'material-ui/styles/colors';
 
 const styles = {
   container: {
@@ -21,6 +23,21 @@ const styles = {
     lineHeight: '26px',
     fontSize: '13px',
     color: grey600,
+  },
+
+  selectField: {
+    margin: '-11px 0 0 4px',
+    width: '115px',
+    fontSize: '13px',
+
+    menuStyle: {
+      color: grey600,
+      fontSize: '13px',
+    },
+
+    underlineStyle: {
+      borderColor: grey200,
+    },
   },
 
   picker: {
@@ -73,6 +90,7 @@ class Filter extends Component {
   static propTypes = {
     filter: PropTypes.object.isRequired,
     onFilterUpdate: PropTypes.func.isRequired,
+    isAdmin: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -80,6 +98,7 @@ class Filter extends Component {
 
     const { filter } = this.props;
     this.state = {
+      showAll: filter.showAll,
       fromDate: filter.fromDate === null ? null : new Date(filter.fromDate),
       fromTime: filter.fromTime === null ? null : new Date(filter.fromTime),
       toDate: filter.toDate === null ? null : new Date(filter.toDate),
@@ -90,6 +109,7 @@ class Filter extends Component {
   componentWillReceiveProps(nextProps) {
     const { filter } = nextProps;
     this.setState({
+      showAll: filter.showAll,
       fromDate: filter.fromDate === null ? null : new Date(filter.fromDate),
       fromTime: filter.fromTime === null ? null : new Date(filter.fromTime),
       toDate: filter.toDate === null ? null : new Date(filter.toDate),
@@ -97,9 +117,21 @@ class Filter extends Component {
     });
   }
 
+  handleShowAllChange = (event, key, value) => {
+    const { onFilterUpdate } = this.props;
+    onFilterUpdate({
+      showAll: value,
+      fromDate: this.state.fromDate,
+      fromTime: this.state.fromTime,
+      toDate: this.state.toDate,
+      toTime: this.state.toTime,
+    });
+  }
+
   handleFromDateChange = (event, date) => {
     const { onFilterUpdate } = this.props;
     onFilterUpdate({
+      showAll: this.state.showAll,
       fromDate: date,
       fromTime: this.state.fromTime,
       toDate: this.state.toDate,
@@ -110,6 +142,7 @@ class Filter extends Component {
   handleFromTimeChange = (event, time) => {
     const { onFilterUpdate } = this.props;
     onFilterUpdate({
+      showAll: this.state.showAll,
       fromDate: this.state.fromDate,
       fromTime: time,
       toDate: this.state.toDate,
@@ -120,6 +153,7 @@ class Filter extends Component {
   handleToDateChange = (event, date) => {
     const { onFilterUpdate } = this.props;
     onFilterUpdate({
+      showAll: this.state.showAll,
       fromDate: this.state.fromDate,
       fromTime: this.state.fromTime,
       toDate: date,
@@ -130,6 +164,7 @@ class Filter extends Component {
   handleToTimeChange = (event, time) => {
     const { onFilterUpdate } = this.props;
     onFilterUpdate({
+      showAll: this.state.showAll,
       fromDate: this.state.fromDate,
       fromTime: this.state.fromTime,
       toDate: this.state.toDate,
@@ -138,9 +173,13 @@ class Filter extends Component {
   };
 
   render() {
-    const { onFilterUpdate } = this.props;
+    const {
+      onFilterUpdate,
+      isAdmin,
+    } = this.props;
 
     const {
+      showAll,
       fromDate,
       fromTime,
       toDate,
@@ -150,7 +189,26 @@ class Filter extends Component {
     return (
       <div style={styles.container}>
         <div style={styles.root}>
-          <div style={styles.title}>Show meals from</div>
+          <div style={styles.title}>Show</div>
+
+          {isAdmin ?
+            <SelectField
+              style={styles.selectField}
+              value={showAll}
+              onChange={this.handleShowAllChange}
+              menuStyle={styles.selectField.menuStyle}
+              underlineFocusStyle={styles.selectField.underlineStyle}
+              underlineStyle={styles.selectField.underlineStyle}
+              underlineDisabledStyle={styles.selectField.underlineStyle}
+            >
+              <MenuItem value primaryText="all meals" />
+              <MenuItem value={false} primaryText="my meals" />
+            </SelectField>
+          :
+            <div style={styles.title}>meals</div>
+          }
+
+          <div style={styles.title}>from</div>
 
           <DatePicker
             style={styles.picker}
@@ -207,6 +265,7 @@ class Filter extends Component {
             label="Clear Filter"
             disabled={!fromDate && !fromTime && !toDate && !toTime}
             onTouchTap={() => onFilterUpdate({
+              showAll: false,
               fromDate: null,
               fromTime: null,
               toDate: null,

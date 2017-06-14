@@ -4,6 +4,7 @@ const initialState = {
   isLoading: false,
   meals: [],
   filter: {
+    showAll: false,
     fromDate: null,
     fromTime: null,
     toDate: null,

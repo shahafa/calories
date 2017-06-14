@@ -117,6 +117,7 @@ class MealsPage extends Component {
         <Filter
           filter={filter}
           onFilterUpdate={this.handleApplyFilterClick}
+          isAdmin={isAdmin}
         />
 
         {dailyMealsList.length === 0 ?
@@ -125,7 +126,7 @@ class MealsPage extends Component {
           dailyMealsList.map(dailyMeals => (
             <DailyMealsCard
               key={dailyMeals.date}
-              isAdmin={isAdmin}
+              showUserColumn={filter.showAll}
               dailyMeals={dailyMeals}
               onDeleteMealClick={meal => this.setState({
                 mealToDelete: meal,
