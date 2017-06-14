@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings reducer should return the initial state 1`] = `
+Object {
+  "isLoading": false,
+  "settings": null,
+}
+`;
+
+exports[`settings reducer should revert settings after update settings failure 1`] = `
+Object {
+  "isLoading": false,
+  "settings": null,
+}
+`;
+
+exports[`settings reducer should set seetings loading flag to false after get settings failure 1`] = `
+Object {
+  "isLoading": false,
+  "settings": Object {
+    "numberOfCaloriesPerDay": 35,
+  },
+}
+`;
+
+exports[`settings reducer should set settings after successful get settings request 1`] = `
+Object {
+  "isLoading": false,
+  "settings": Object {
+    "numberOfCaloriesPerDay": 35,
+  },
+}
+`;
+
+exports[`settings reducer should start get settings request 1`] = `
+Object {
+  "isLoading": true,
+  "settings": null,
+}
+`;
+
+exports[`settings reducer should update settings after successful update settings request 1`] = `
+Object {
+  "isLoading": false,
+  "settings": null,
+}
+`;
+
+exports[`settings reducer should update settings locally before update settings request 1`] = `
+Object {
+  "isLoading": false,
+  "settings": null,
+}
+`;

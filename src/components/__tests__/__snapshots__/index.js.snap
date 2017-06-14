@@ -1,0 +1,1027 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddMealButton should render 1`] = `
+<div
+  className={undefined}
+  style={
+    Object {
+      "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+      "backgroundColor": "transparent",
+      "borderRadius": "50%",
+      "bottom": "32px",
+      "boxShadow": "0 3px 10px rgba(0, 0, 0, 0.16),
+             0 3px 10px rgba(0, 0, 0, 0.23)",
+      "boxSizing": "border-box",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "display": "inline-block",
+      "fontFamily": "Roboto, sans-serif",
+      "muiPrepared": true,
+      "position": "absolute",
+      "right": "64px",
+      "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+    }
+  }
+>
+  <button
+    disabled={false}
+    href={undefined}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    onTouchTap={[Function]}
+    style={
+      Object {
+        "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+        "backgroundColor": "#ff4081",
+        "border": 10,
+        "borderRadius": "50%",
+        "boxSizing": "border-box",
+        "cursor": "pointer",
+        "display": "inline-block",
+        "fontFamily": "Roboto, sans-serif",
+        "fontSize": "inherit",
+        "fontWeight": "inherit",
+        "height": 56,
+        "margin": 0,
+        "muiPrepared": true,
+        "outline": "none",
+        "overflow": "hidden",
+        "padding": 0,
+        "position": "relative",
+        "textAlign": "center",
+        "textDecoration": "none",
+        "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+        "verticalAlign": "bottom",
+        "width": 56,
+        "zIndex": 1,
+      }
+    }
+    tabIndex={0}
+    type="button"
+  >
+    <div
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+    >
+      <div
+        style={
+          Object {
+            "muiPrepared": true,
+            "top": 0,
+            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+          }
+        }
+      >
+        <svg
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#ffffff",
+              "display": "inline-block",
+              "fill": "#ffffff",
+              "height": 56,
+              "lineHeight": "56px",
+              "muiPrepared": true,
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+              "userSelect": "none",
+              "width": 24,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`AddMealDialog should render 1`] = `null`;
+
+exports[`DailyMealsCard should render 1`] = `
+<div
+  style={
+    Object {
+      "margin": "0 auto 50px auto",
+      "maxWidth": "640px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+        "backgroundColor": "#ffffff",
+        "borderRadius": 2,
+        "boxShadow": "0 1px 6px rgba(0, 0, 0, 0.12),
+               0 1px 4px rgba(0, 0, 0, 0.12)",
+        "boxSizing": "border-box",
+        "color": "rgba(0, 0, 0, 0.87)",
+        "fontFamily": "Roboto, sans-serif",
+        "muiPrepared": true,
+        "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+        "zIndex": 1,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "paddingBottom": 0,
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "linear-gradient(to right, #43a047, #81c784)",
+            "boxSizing": "border-box",
+            "color": "white",
+            "display": "flex",
+            "fontSize": "14px",
+            "fontWeight": "300",
+            "height": "55px",
+            "justifyContent": "space-between",
+            "lineHeight": "20px",
+            "padding": "16px",
+          }
+        }
+      >
+        <div>
+          Today
+        </div>
+        <div>
+          Total Calories: 87
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "height": "auto",
+            "muiPrepared": true,
+            "overflow": "auto",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "muiPrepared": true,
+            }
+          }
+        >
+          <table
+            className={undefined}
+            style={
+              Object {
+                "backgroundColor": "#ffffff",
+                "borderCollapse": "collapse",
+                "borderSpacing": 0,
+                "fontFamily": "Roboto, sans-serif",
+                "tableLayout": "fixed",
+                "width": "100%",
+              }
+            }
+          >
+            <thead
+              className={undefined}
+              style={
+                Object {
+                  "borderBottom": "1px solid #e0e0e0",
+                  "muiPrepared": true,
+                }
+              }
+            >
+              <tr
+                className={undefined}
+                style={
+                  Object {
+                    "borderBottom": "1px solid #e0e0e0",
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "height": 48,
+                    "muiPrepared": true,
+                  }
+                }
+              >
+                <th
+                  className={undefined}
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "inherit",
+                      "color": "#9e9e9e",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "height": 56,
+                      "muiPrepared": true,
+                      "paddingLeft": 24,
+                      "paddingRight": 24,
+                      "position": "relative",
+                      "textAlign": "left",
+                      "textOverflow": "ellipsis",
+                      "whiteSpace": "nowrap",
+                      "width": "40px",
+                    }
+                  }
+                >
+                  Time
+                </th>
+                <th
+                  className={undefined}
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "inherit",
+                      "color": "#9e9e9e",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "height": 56,
+                      "muiPrepared": true,
+                      "paddingLeft": 24,
+                      "paddingRight": 24,
+                      "position": "relative",
+                      "textAlign": "left",
+                      "textOverflow": "ellipsis",
+                      "whiteSpace": "nowrap",
+                    }
+                  }
+                >
+                  Meal
+                </th>
+                <th
+                  className={undefined}
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "inherit",
+                      "color": "#9e9e9e",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "height": 56,
+                      "muiPrepared": true,
+                      "paddingLeft": 24,
+                      "paddingRight": 24,
+                      "position": "relative",
+                      "textAlign": "left",
+                      "textOverflow": "ellipsis",
+                      "whiteSpace": "nowrap",
+                    }
+                  }
+                >
+                  Calories
+                </th>
+                <th
+                  className={undefined}
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "inherit",
+                      "color": "#9e9e9e",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "height": 56,
+                      "muiPrepared": true,
+                      "paddingLeft": 24,
+                      "paddingRight": 24,
+                      "position": "relative",
+                      "textAlign": "left",
+                      "textOverflow": "ellipsis",
+                      "whiteSpace": "nowrap",
+                      "width": "37px",
+                    }
+                  }
+                />
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div
+          style={
+            Object {
+              "height": "inherit",
+              "muiPrepared": true,
+              "overflowX": "hidden",
+              "overflowY": "auto",
+            }
+          }
+        >
+          <table
+            className={undefined}
+            style={
+              Object {
+                "backgroundColor": "#ffffff",
+                "borderCollapse": "collapse",
+                "borderSpacing": 0,
+                "fontFamily": "Roboto, sans-serif",
+                "tableLayout": "fixed",
+                "width": "100%",
+              }
+            }
+          >
+            <tbody
+              style={
+                Object {
+                  "height": "inherit",
+                  "muiPrepared": true,
+                }
+              }
+            >
+              <tr
+                className={undefined}
+                style={
+                  Object {
+                    "borderBottom": false,
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "height": 48,
+                    "muiPrepared": true,
+                  }
+                }
+              >
+                <td
+                  className={undefined}
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "inherit",
+                      "fontSize": 13,
+                      "height": 48,
+                      "muiPrepared": true,
+                      "overflow": "hidden",
+                      "paddingLeft": 24,
+                      "paddingRight": 24,
+                      "textAlign": "left",
+                      "textOverflow": "ellipsis",
+                      "whiteSpace": "nowrap",
+                      "width": "40px",
+                    }
+                  }
+                >
+                  15:40
+                </td>
+                <td
+                  className={undefined}
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "inherit",
+                      "fontSize": 13,
+                      "height": 48,
+                      "muiPrepared": true,
+                      "overflow": "hidden",
+                      "paddingLeft": 24,
+                      "paddingRight": 24,
+                      "textAlign": "left",
+                      "textOverflow": "ellipsis",
+                      "whiteSpace": "nowrap",
+                    }
+                  }
+                >
+                  food
+                </td>
+                <td
+                  className={undefined}
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "inherit",
+                      "fontSize": 13,
+                      "height": 48,
+                      "muiPrepared": true,
+                      "overflow": "hidden",
+                      "paddingLeft": 24,
+                      "paddingRight": 24,
+                      "textAlign": "left",
+                      "textOverflow": "ellipsis",
+                      "whiteSpace": "nowrap",
+                    }
+                  }
+                >
+                  87
+                </td>
+                <td
+                  className={undefined}
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "inherit",
+                      "fontSize": 13,
+                      "height": 48,
+                      "muiPrepared": true,
+                      "overflow": "hidden",
+                      "paddingLeft": 24,
+                      "paddingRight": 24,
+                      "textAlign": "left",
+                      "textOverflow": "ellipsis",
+                      "whiteSpace": "nowrap",
+                      "width": "37px",
+                    }
+                  }
+                >
+                  <svg
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    style={
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                        "cursor": "pointer",
+                        "display": "inline-block",
+                        "fill": "#9E9E9E",
+                        "height": "18px",
+                        "marginRight": "4px",
+                        "muiPrepared": true,
+                        "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                        "userSelect": "none",
+                        "width": "18px",
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  <svg
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    style={
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                        "cursor": "pointer",
+                        "display": "inline-block",
+                        "fill": "#9E9E9E",
+                        "height": "18px",
+                        "muiPrepared": true,
+                        "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                        "userSelect": "none",
+                        "width": "18px",
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DeleteMealDialog should render 1`] = `null`;
+
+exports[`DeleteUserDialog should render 1`] = `null`;
+
+exports[`HomeShell should render 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "backgroundImage": "url(home-background.jpg)",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "cover",
+        "display": "fixed",
+        "filter": "opacity(75%) blur(2px)",
+        "height": "100vh",
+        "width": "100vw",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "height": "100vh",
+        "justifyContent": "center",
+        "left": 0,
+        "position": "fixed",
+        "top": 0,
+        "width": "100vw",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "background": "white",
+          "borderRadius": "5px",
+          "boxShadow": "0 10px 20px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.4)",
+          "filter": "opacity(90%)",
+          "height": "425px",
+          "padding": "35px",
+          "width": "250px",
+        }
+      }
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main should render 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flex": "1",
+      "flexDirection": "column",
+    }
+  }
+>
+  <div />
+</div>
+`;
+
+exports[`NavigationMenu should render 1`] = `
+<div
+  style={
+    Object {
+      "marginTop": "5px",
+      "muiPrepared": true,
+      "padding": "8px 0px 8px 0px",
+      "position": "absolute",
+      "width": "230px",
+    }
+  }
+>
+  <div>
+    <span
+      disabled={undefined}
+      href={undefined}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      onTouchTap={[Function]}
+      open={null}
+      style={
+        Object {
+          "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+          "background": "none",
+          "backgroundColor": null,
+          "border": 10,
+          "boxSizing": "border-box",
+          "color": "#3367d6",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "Roboto, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "letterSpacing": ".01em",
+          "lineHeight": "16px",
+          "margin": 0,
+          "muiPrepared": true,
+          "outline": "none",
+          "padding": 0,
+          "paddingLeft": "18px",
+          "position": "relative",
+          "textDecoration": "none",
+          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+          "verticalAlign": null,
+          "zIndex": 1,
+        }
+      }
+      tabIndex={0}
+    >
+      <div
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <div
+          style={
+            Object {
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 16,
+              "position": "relative",
+            }
+          }
+        >
+          <svg
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "display": "block",
+                "fill": "#3367d6",
+                "height": 24,
+                "left": 4,
+                "margin": 12,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 0,
+                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"
+            />
+          </svg>
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Meals
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div>
+    <span
+      disabled={undefined}
+      href={undefined}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      onTouchTap={[Function]}
+      open={null}
+      style={
+        Object {
+          "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+          "background": "none",
+          "backgroundColor": null,
+          "border": 10,
+          "boxSizing": "border-box",
+          "color": "#757575",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "Roboto, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "letterSpacing": ".01em",
+          "lineHeight": "16px",
+          "margin": 0,
+          "muiPrepared": true,
+          "outline": "none",
+          "padding": 0,
+          "paddingLeft": "18px",
+          "position": "relative",
+          "textDecoration": "none",
+          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+          "verticalAlign": null,
+          "zIndex": 1,
+        }
+      }
+      tabIndex={0}
+    >
+      <div
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <div
+          style={
+            Object {
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 16,
+              "position": "relative",
+            }
+          }
+        >
+          <svg
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "display": "block",
+                "fill": "#757575",
+                "height": 24,
+                "left": 4,
+                "margin": 12,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 0,
+                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16.5 12c1.38 0 2.49-1.12 2.49-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 2.99-1.34 2.99-3S10.66 5 9 5C7.34 5 6 6.34 6 8s1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.33-2.34 2.37-3.47C10.5 13.1 9.66 13 9 13z"
+            />
+          </svg>
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Users Management
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div>
+    <span
+      disabled={undefined}
+      href={undefined}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      onTouchTap={[Function]}
+      open={null}
+      style={
+        Object {
+          "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+          "background": "none",
+          "backgroundColor": null,
+          "border": 10,
+          "boxSizing": "border-box",
+          "color": "#757575",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "Roboto, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "letterSpacing": ".01em",
+          "lineHeight": "16px",
+          "margin": 0,
+          "muiPrepared": true,
+          "outline": "none",
+          "padding": 0,
+          "paddingLeft": "18px",
+          "position": "relative",
+          "textDecoration": "none",
+          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+          "verticalAlign": null,
+          "zIndex": 1,
+        }
+      }
+      tabIndex={0}
+    >
+      <div
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <div
+          style={
+            Object {
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 16,
+              "position": "relative",
+            }
+          }
+        >
+          <svg
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "display": "block",
+                "fill": "#757575",
+                "height": 24,
+                "left": 4,
+                "margin": 12,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 0,
+                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"
+            />
+          </svg>
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Settings
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div>
+    <span
+      disabled={undefined}
+      href={undefined}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      onTouchTap={[Function]}
+      open={null}
+      style={
+        Object {
+          "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+          "background": "none",
+          "backgroundColor": null,
+          "border": 10,
+          "boxSizing": "border-box",
+          "color": "#757575",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "Roboto, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "letterSpacing": ".01em",
+          "lineHeight": "16px",
+          "margin": 0,
+          "muiPrepared": true,
+          "outline": "none",
+          "padding": 0,
+          "paddingLeft": "18px",
+          "position": "relative",
+          "textDecoration": "none",
+          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+          "verticalAlign": null,
+          "zIndex": 1,
+        }
+      }
+      tabIndex={0}
+    >
+      <div
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <div
+          style={
+            Object {
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 16,
+              "position": "relative",
+            }
+          }
+        >
+          <svg
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "display": "block",
+                "fill": "#757575",
+                "height": 24,
+                "left": 4,
+                "margin": 12,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 0,
+                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+            />
+          </svg>
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Sign out
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`NoMeals should render 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "color": "#757575",
+      "display": "flex",
+      "flex": 1,
+      "flexDirection": "column",
+      "fontSize": "20px",
+      "fontWeight": "300",
+      "justifyContent": "center",
+      "marginTop": "-125px",
+    }
+  }
+>
+  <div>
+    Hey, your meals report is empty :(
+  </div>
+  <div
+    style={
+      Object {
+        "marginTop": "20px",
+      }
+    }
+  >
+    Check the filter or use the add button to add a new meal
+  </div>
+</div>
+`;

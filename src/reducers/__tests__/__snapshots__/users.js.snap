@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`users reducer should delete user locally before delete user request 1`] = `
+Object {
+  "isLoading": false,
+  "users": Array [],
+}
+`;
+
+exports[`users reducer should return the initial state 1`] = `
+Object {
+  "isLoading": false,
+  "users": Array [],
+}
+`;
+
+exports[`users reducer should revert users list after delete user failure 1`] = `
+Object {
+  "isLoading": false,
+  "users": Array [
+    Object {
+      "email": "user@mail.com",
+      "id": "9e65644e-e326-48d9-be7d-7d13f8b36992",
+      "role": "user",
+    },
+  ],
+}
+`;
+
+exports[`users reducer should revert users role after update user role failure 1`] = `
+Object {
+  "isLoading": false,
+  "users": Array [
+    Object {
+      "email": "user@mail.com",
+      "id": "9e65644e-e326-48d9-be7d-7d13f8b36992",
+      "role": "userManager",
+    },
+  ],
+}
+`;
+
+exports[`users reducer should set users after successful get users request 1`] = `
+Object {
+  "isLoading": false,
+  "users": Array [
+    Object {
+      "email": "user@mail.com",
+      "id": "9e65644e-e326-48d9-be7d-7d13f8b36992",
+      "role": "user",
+    },
+  ],
+}
+`;
+
+exports[`users reducer should set users loading flag to false after get users failure 1`] = `
+Object {
+  "isLoading": false,
+  "users": Array [],
+}
+`;
+
+exports[`users reducer should start get users request 1`] = `
+Object {
+  "isLoading": true,
+  "users": Array [],
+}
+`;
+
+exports[`users reducer should update user role after successful update user role request 1`] = `
+Object {
+  "isLoading": false,
+  "users": Array [
+    Object {
+      "email": "user@mail.com",
+      "id": "9e65644e-e326-48d9-be7d-7d13f8b36992",
+      "role": "userManager",
+    },
+  ],
+}
+`;
+
+exports[`users reducer should update users list after successful delete user request 1`] = `
+Object {
+  "isLoading": false,
+  "users": Array [
+    Object {
+      "email": "user@mail.com",
+      "id": "9e65644e-e326-48d9-be7d-7d13f8b36992",
+      "role": "user",
+    },
+  ],
+}
+`;

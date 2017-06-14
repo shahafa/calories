@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`meals reducer should add meal locally before add meal request 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [
+    Object {
+      "calories": 100,
+      "date": "2017-06-14T11:04:00Z",
+      "id": "7eacca01-5a0e-4956-badc-a60e98eb3cfe",
+      "meal": "test meal",
+      "userEmail": "user@mail.com",
+    },
+  ],
+}
+`;
+
+exports[`meals reducer should delete meal locally before delete meal request 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [],
+}
+`;
+
+exports[`meals reducer should return the initial state 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [],
+}
+`;
+
+exports[`meals reducer should revert meals list after add meal failure 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [
+    Object {
+      "calories": 100,
+      "date": "2017-06-14T11:04:00Z",
+      "id": "7eacca01-5a0e-4956-badc-a60e98eb3cfe",
+      "meal": "test meal",
+      "userEmail": "user@mail.com",
+    },
+  ],
+}
+`;
+
+exports[`meals reducer should revert meals list after delete meal failure 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [],
+}
+`;
+
+exports[`meals reducer should revert meals list after edit meal failure 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [
+    Object {
+      "calories": 105,
+      "date": "2017-06-14T11:04:00Z",
+      "id": "7eacca01-5a0e-4956-badc-a60e98eb3cfe",
+      "meal": "test meal",
+      "userEmail": "user@mail.com",
+    },
+  ],
+}
+`;
+
+exports[`meals reducer should set filter 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": "2017-06-11T21:00:00.000Z",
+    "fromTime": "2017-06-14T11:44:18.187Z",
+    "toDate": "2017-06-14T11:44:19.930Z",
+    "toTime": "2017-06-14T11:44:23.220Z",
+  },
+  "isLoading": false,
+  "meals": Array [],
+}
+`;
+
+exports[`meals reducer should set meals after successful GET meals request 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [
+    Object {
+      "calories": 100,
+      "date": "2017-06-14T11:04:00Z",
+      "id": "7eacca01-5a0e-4956-badc-a60e98eb3cfe",
+      "meal": "test meal",
+      "userEmail": "user@mail.com",
+    },
+  ],
+}
+`;
+
+exports[`meals reducer should set meals loading flag to false after GET meals failure 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [],
+}
+`;
+
+exports[`meals reducer should start meals request 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": true,
+  "meals": Array [],
+}
+`;
+
+exports[`meals reducer should update meal locally before edit meal request 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [],
+}
+`;
+
+exports[`meals reducer should update meals after successful add meal request 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [
+    Object {
+      "calories": 100,
+      "date": "2017-06-14T11:04:00Z",
+      "id": "7eacca01-5a0e-4956-badc-a60e98eb3cfe",
+      "meal": "test meal",
+      "userEmail": "user@mail.com",
+    },
+  ],
+}
+`;
+
+exports[`meals reducer should update meals after successful delete meal request 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [],
+}
+`;
+
+exports[`meals reducer should update meals after successful edit meal request 1`] = `
+Object {
+  "filter": Object {
+    "fromDate": null,
+    "fromTime": null,
+    "toDate": null,
+    "toTime": null,
+  },
+  "isLoading": false,
+  "meals": Array [
+    Object {
+      "calories": 105,
+      "date": "2017-06-14T11:04:00Z",
+      "id": "7eacca01-5a0e-4956-badc-a60e98eb3cfe",
+      "meal": "test meal",
+      "userEmail": "user@mail.com",
+    },
+  ],
+}
+`;

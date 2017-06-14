@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`auth reducer should reset the auth state 1`] = `
+Object {
+  "errorCode": null,
+  "errorText": "",
+  "isAuthenticated": false,
+  "isAuthenticating": false,
+  "isSigningUp": false,
+  "jwtToken": null,
+  "user": Object {
+    "role": "",
+  },
+}
+`;
+
+exports[`auth reducer should return the initial state 1`] = `
+Object {
+  "errorCode": null,
+  "errorText": "",
+  "isAuthenticated": false,
+  "isAuthenticating": false,
+  "isSigningUp": false,
+  "jwtToken": null,
+  "user": Object {
+    "role": "",
+  },
+}
+`;
+
+exports[`auth reducer should set error after login failure 1`] = `
+Object {
+  "error": 5,
+  "errorText": "Invalid email or password",
+  "isAuthenticated": false,
+  "isAuthenticating": false,
+  "jwtToken": null,
+  "user": Object {
+    "role": "",
+  },
+}
+`;
+
+exports[`auth reducer should set error after signup failure 1`] = `
+Object {
+  "error": 6,
+  "errorText": "Account with that email address already exists",
+  "isAuthenticated": false,
+  "isSigningUp": false,
+  "jwtToken": null,
+  "user": Object {
+    "role": "",
+  },
+}
+`;
+
+exports[`auth reducer should set token after successful login 1`] = `
+Object {
+  "isAuthenticated": true,
+  "isAuthenticating": false,
+  "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMmM3YTlhOGItNmE5OS00ODM3LWFmMDQtMjMxNDBlMjA1MWUxIiwiZW1haWwiOiJ1c2VyQG1haWwuY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNDk3NDM1NDE2LCJleHAiOjE0OTc1MjE4MTZ9.439LE9pxyTeXrNEqNaWy8wrp3LZHfbnb4EvHIl1gUSM",
+  "user": Object {
+    "email": "user@mail.com",
+    "id": "2c7a9a8b-6a99-4837-af04-23140e2051e1",
+    "role": "user",
+  },
+}
+`;
+
+exports[`auth reducer should set token after successful signup 1`] = `
+Object {
+  "isAuthenticated": true,
+  "isSigningUp": false,
+  "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMmM3YTlhOGItNmE5OS00ODM3LWFmMDQtMjMxNDBlMjA1MWUxIiwiZW1haWwiOiJ1c2VyQG1haWwuY29tIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNDk3NDM1NDE2LCJleHAiOjE0OTc1MjE4MTZ9.439LE9pxyTeXrNEqNaWy8wrp3LZHfbnb4EvHIl1gUSM",
+  "user": Object {
+    "email": "user@mail.com",
+    "id": "2c7a9a8b-6a99-4837-af04-23140e2051e1",
+    "role": "user",
+  },
+}
+`;
+
+exports[`auth reducer should start login request 1`] = `
+Object {
+  "isAuthenticating": true,
+}
+`;
+
+exports[`auth reducer should start signup request 1`] = `
+Object {
+  "isSigningUp": true,
+}
+`;
