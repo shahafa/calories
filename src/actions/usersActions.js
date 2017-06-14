@@ -4,7 +4,7 @@ import * as types from '../constants/actionTypes';
 
 export const getUsers = () => ({
   [RSAA]: {
-    endpoint: '/users',
+    endpoint: '/v1/users',
     method: 'GET',
     headers: { Authorization: `Bearer ${store.getState().auth.jwtToken}` },
     types: [types.GET_USERS_REQUEST, types.GET_USERS_SUCCESS, types.GET_USERS_FAILURE],
@@ -13,7 +13,7 @@ export const getUsers = () => ({
 
 export const updateUsersRole = users => ({
   [RSAA]: {
-    endpoint: '/users',
+    endpoint: '/v1/users',
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export const updateUsersRole = users => ({
 
 export const deleteUser = userId => ({
   [RSAA]: {
-    endpoint: `/users/${userId}`,
+    endpoint: `/v1/users/${userId}`,
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${store.getState().auth.jwtToken}`,

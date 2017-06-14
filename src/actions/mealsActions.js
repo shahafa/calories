@@ -4,7 +4,7 @@ import * as types from '../constants/actionTypes';
 
 export const getMeals = () => ({
   [RSAA]: {
-    endpoint: '/meals',
+    endpoint: '/v1/meals',
     method: 'GET',
     headers: { Authorization: `Bearer ${store.getState().auth.jwtToken}` },
     types: [types.GET_MEALS_REQUEST, types.GET_MEALS_SUCCESS, types.GET_MEALS_FAILURE],
@@ -13,7 +13,7 @@ export const getMeals = () => ({
 
 export const addMeal = meal => ({
   [RSAA]: {
-    endpoint: '/meals',
+    endpoint: '/v1/meals',
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const addMeal = meal => ({
 
 export const deleteMeal = mealId => ({
   [RSAA]: {
-    endpoint: `/meals/${mealId}`,
+    endpoint: `/v1/meals/${mealId}`,
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${store.getState().auth.jwtToken}`,
@@ -51,7 +51,7 @@ export const deleteMeal = mealId => ({
 
 export const editMeal = meal => ({
   [RSAA]: {
-    endpoint: `/meals/${meal.id}`,
+    endpoint: `/v1/meals/${meal.id}`,
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

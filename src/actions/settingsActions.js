@@ -4,7 +4,7 @@ import * as types from '../constants/actionTypes';
 
 export const getSettings = () => ({
   [RSAA]: {
-    endpoint: '/settings',
+    endpoint: '/v1/settings',
     method: 'GET',
     headers: { Authorization: `Bearer ${store.getState().auth.jwtToken}` },
     types: [types.GET_SETTINGS_REQUEST, types.GET_SETTINGS_SUCCESS, types.GET_SETTINGS_FAILURE],
@@ -13,7 +13,7 @@ export const getSettings = () => ({
 
 export const setSettings = settings => ({
   [RSAA]: {
-    endpoint: '/settings',
+    endpoint: '/v1/settings',
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

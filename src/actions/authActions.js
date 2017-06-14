@@ -9,7 +9,7 @@ export const resetAuthState = () => ({
 
 export const login = (email, password) => ({
   [RSAA]: {
-    endpoint: '/login',
+    endpoint: '/v1/login',
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -22,7 +22,7 @@ export const login = (email, password) => ({
 
 export const signup = (email, password) => ({
   [RSAA]: {
-    endpoint: '/signup',
+    endpoint: '/v1/signup',
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
