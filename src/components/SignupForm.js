@@ -135,7 +135,7 @@ class SignupForm extends Component {
 
     if (this.validateEmail() && this.validatePassword() && this.validateConfirmPassword()) {
       onSignupButtonClick(email, password);
-      this.setState({ email: '', password: '' });
+      this.setState({ email: '', password: '', confirmPassword: '' });
     }
   }
 

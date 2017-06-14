@@ -25,6 +25,7 @@ export const mealsGroupByDaySelector = createSelector(
                 .filter(meal => !fromTimeFilter || moment({ hour: moment(meal.date).hour(), minute: moment(meal.date).minute() }).isSameOrAfter(fromTimeFilter))
                 .filter(meal => !toTimeFilter || moment({ hour: moment(meal.date).hour(), minute: moment(meal.date).minute() }).isSameOrBefore(toTimeFilter))
                 .sort((left, right) => moment.utc(right.date).diff(moment.utc(left.date))),
-      }));
+      }))
+      .filter(date => date.meals.length > 0);
   },
 );
