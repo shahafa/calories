@@ -93,6 +93,9 @@ class AddMealDialog extends Component {
     if (!validator.isNumeric(calories.toString())) {
       this.setState({ caloriesErrorText: 'Please enter a valid Calories number' });
       return false;
+    } else if (calories < 1) {
+      this.setState({ caloriesErrorText: 'Please enter a valid Calories number' });
+      return false;
     }
 
     this.setState({ caloriesErrorText: '' });
