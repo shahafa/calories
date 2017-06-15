@@ -163,7 +163,7 @@ exports[`DailyMealsCard should render 1`] = `
         }
       >
         <div>
-          Today
+          Yesterday
         </div>
         <div>
           Total Calories: 87
